@@ -1,0 +1,1451 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Microsoft.TeamFoundation.WorkItemTracking.Controls</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl">
+      <summary>ColumnsPickerControl is a UserControl for selecting and ordering a collection of Currituck fields/columns and also existing user-defined fields. It has two listviews with available and selected columns and buttons to move items between them.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.#ctor(Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItemStore)">
+      <summary>No default constructor.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.#ctor(Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItemStore,Microsoft.TeamFoundation.WorkItemTracking.Controls.IColumnsPickerFieldDefinitionFilter)">
+      <summary>No default constructor.</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.AddRequiredButtonLabel">
+      <summary>Requires non-empty value on set.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.AllWorkItemTypesText">
+      <summary>Requires non-empty value on set.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.AvailableColumnsLabel">
+      <summary>Requires non-empty value on set.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.ClickAddRequiredButton"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.ClickResetButton"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.ColumnPickerDescriptionText">
+      <summary>Requires non-empty value on set.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.ColumnPickerWorkItemTypeLabel">
+      <summary>Requires non-empty value on set.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.ColumnResetButtonLabel">
+      <summary>Requires non-empty value on set.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.Dispose(System.Boolean)">
+      <summary>Clean up any resources being used.</summary>
+      <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.ExcludedColumns">
+      <summary>ArrayList collection of currituck string identifiers.</summary>
+      <returns>Returns <see cref="T:System.Collections.ArrayList" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.FakedVirtualColumns">
+      <summary>Returns the VirtualColumnCollection for the faked columns This is created because we must support splitted title columns</summary>
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.PortfolioDisplayName">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.RequiredItemTag">
+      <summary>Requires non-empty value on set.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.ResetControlState">
+      <summary>Resets all properties to default values and resets controls to default states.</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.SelectedColumnsLabel">
+      <summary>Requires non-empty value on set.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.SelectedVirtualColumns">
+      <summary>VirtualColumnCollection of VirtualColumn objects.</summary>
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.SelectedWorkItemType">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.ShowBottomButtons">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.SpecialAvailableVirtualColumns">
+      <summary>VirtualColumnCollection of VirtualColumn objects.</summary>
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ColumnsPickerControl.ValidateAndApplyControlState">
+      <summary>Ensures control's properties are in a valid state to be displayed and applies them to the child controls; throws InvalidOperationException exceptions for errors. Called one time just before control's parent is displayed.</summary>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.Connection">
+      <summary>The Connection Enumeration represents the types of connections that a group node can have (None, Up, Down, Across).</summary>
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.Connection.None">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.Connection.Up">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.Connection.Down">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.Connection.Across">
+      <summary />
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.CountChangedEventArgs">
+      <summary>Simple EventArgs derived class for passing one argument (bool) to an EventHandler as required by FxCop.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.CountChangedEventArgs.#ctor(System.Boolean)">
+      <summary>No default constructor.</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.CountChangedEventArgs.EmptyList">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayField">
+      <summary>This class abstracts the Fields used in the Package.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayField.#ctor(System.String,System.Int32)"></member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayField.Changed"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayField.FieldName">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayField.GetInvariantFieldName(System.String,Microsoft.TeamFoundation.WorkItemTracking.Client.FieldDefinitionCollection)">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayField.GetLocalizedFieldName(System.String,Microsoft.TeamFoundation.WorkItemTracking.Client.FieldDefinitionCollection)">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayField.ToString">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayField.Width">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection">
+      <summary>This is a collection class that holds DisplayFields</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.#ctor"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.#ctor(Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.Add(Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayField)">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.AddRange(Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayField[])"></member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.Changed"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.Clear"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.Contains(Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayField)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.Contains(System.String)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.CopyTo(Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayField[],System.Int32)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.Count">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.Equals(System.Object)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.GetEnumerator">
+      <returns>Returns <see cref="T:System.Collections.IEnumerator" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.GetHashCode">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.IndexOf(Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayField)">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.IndexOf(System.String)">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.Insert(System.Int32,Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayField)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.IsReadOnly">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.Item(System.Int32)">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayField" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.Item(System.String)">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayField" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.Remove(Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayField)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.RemoveAt(System.Int32)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.System#Collections#ICollection#CopyTo(System.Array,System.Int32)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.System#Collections#ICollection#IsSynchronized">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.System#Collections#ICollection#SyncRoot">
+      <returns>Returns <see cref="T:System.Object" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.System#Collections#IList#Add(System.Object)">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.System#Collections#IList#Contains(System.Object)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.System#Collections#IList#IndexOf(System.Object)">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.System#Collections#IList#Insert(System.Int32,System.Object)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.System#Collections#IList#IsFixedSize">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.System#Collections#IList#Item(System.Int32)">
+      <returns>Returns <see cref="T:System.Object" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection.System#Collections#IList#Remove(System.Object)"></member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayMode"></member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayMode.Edit">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayMode.Add">
+      <summary />
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.FilterReason"></member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.FilterReason.Valid">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.FilterReason.Excluded">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.FilterReason.DoesNotExistsInCurrentProject">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.FilterReason.CannotLinkSelf">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.FilterReason.InvalidForLinksControl">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.FilterReason.AccessDenied">
+      <summary />
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.FormElementType">
+      <summary>This enumeration lists all the different types of form elements.</summary>
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.FormElementType.RootElement">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.FormElementType.Column">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.FormElementType.Control">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.FormElementType.Group">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.FormElementType.Splitter">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.FormElementType.Tab">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.FormElementType.TabGroup">
+      <summary />
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlFilter"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlFilter.ConvertToPlainText(System.String)">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlFilter.Strip(System.String)">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IColumnsPickerFieldDefinitionFilter">
+      <summary>Interface to filter out columns of FieldDefinition types not supported by the caller.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IColumnsPickerFieldDefinitionFilter.SupportedFieldDefinition(Microsoft.TeamFoundation.WorkItemTracking.Client.FieldDefinition)">
+      <summary>SupportedFieldDefinition returns true if FieldDefinition object is supported by the caller.</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+      <param name="fieldDef">FieldDefinition value to evaulate.</param>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IDialogControl">
+      <summary>All controls to be hosted in Links dialog box should implement this interface This is old interface supported for backward compatibility.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IDialogControl.GetDisplayName(System.String)">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IDialogControl.GetUpdatedLink">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Client.Link" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IDialogControl.Initialize(Microsoft.TeamFoundation.WorkItemTracking.Controls.IDialogControlHost,Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayMode,Microsoft.TeamFoundation.WorkItemTracking.Client.Link)"></member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IDialogControlHost"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IDialogControlHost.ServiceProvider">
+      <returns>Returns <see cref="T:System.IServiceProvider" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IDialogControlHost.TeamFoundationServer">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.Client.TeamFoundationServer" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IDialogControlHost.WorkItem">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.ILinkDialogControl"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ILinkDialogControl.GetDisplayName(System.String)">
+      <summary>obtains the localized display name of the link</summary>
+      <returns>the localized display name of the link</returns>
+      <param name="linkTypeName">link type name</param>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ILinkDialogControl.GetUpdatedLinks">
+      <summary>the updated links obtained from user if multiselct is set to false, the array should have one element</summary>
+      <returns>links obtained from user</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ILinkDialogControl.Initialize(Microsoft.TeamFoundation.WorkItemTracking.Controls.ILinkDialogControlHost,Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayMode,Microsoft.TeamFoundation.WorkItemTracking.Client.Link,System.Boolean)">
+      <summary>Initializies the control with host, mode and existing link if it is in edit mode</summary>
+      <param name="controlHost">the link dialog ControlHost</param>
+      <param name="displayMode">dialog mode (add or edit)</param>
+      <param name="link">the edited link, null if mode is add</param>
+      <param name="multiSelect">allow for multi select</param>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.ILinkDialogControlHost">
+      <summary>The add/edit link dialog implements this interfaces and is passed to child link controls</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ILinkDialogControlHost.IsMultipleSourceMode">
+      <summary>true if there are multiple source workitems. the WorkItem return one of the source workitems</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ILinkDialogControlHost.LinkTypeName">
+      <summary>name of the selected link type</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.ILinkDialogControlHost.LinkTypeNameChanged">
+      <summary>occurs when the link type name is changed</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ILinkDialogControlHost.ServiceProvider">
+      <summary>Service provider that the host exposes for controls that it contains to use for services such as accessing Fonts</summary>
+      <returns>Returns <see cref="T:System.IServiceProvider" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ILinkDialogControlHost.TeamProjectCollection">
+      <summary>TfsTeamProjectCollection the host is associated with</summary>
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.Client.TfsTeamProjectCollection" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ILinkDialogControlHost.WorkItem">
+      <summary>the workitem the host is associted with</summary>
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IResultListDataProvider"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IResultListDataProvider.AddFieldForPaging(System.String)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IResultListDataProvider.DisplayRowCount">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IResultListDataProvider.GetFieldInfo(System.String,System.Int32@,System.Boolean@)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IResultListDataProvider.GetFieldValue(System.Int32,System.Int32)">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IResultListDataProvider.GetItem(System.Int32)">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IResultListDataProvider.GetItemId(System.Int32)">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IResultListDataProvider.GetItemIndex(System.Int32)">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IResultListDataProvider.IsItemDirty(System.Int32)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IResultListDataProvider.PageItems(System.Int32[])">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IStatusHandler">
+      <summary>Defines a handler (host) for status updates (for example Query or Triage editor)</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IStatusHandler.SetText(System.String)">
+      <summary>Sets status text</summary>
+      <param name="text">the new status text</param>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IStatusHandler.ShowException(System.Exception)">
+      <summary>Shows an exception in the form approproate for the host</summary>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IStatusProvider">
+      <summary>Represents a provider of status (for example a control on a WIT form)</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IStatusProvider.StatusHandler">
+      <summary>Used to get a control seeded with the handler instance</summary>
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IStatusHandler" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemClipboard"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemClipboard.CanCopy">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemClipboard.CanCut">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemClipboard.CanPaste">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemClipboard.ClipboardStatusChanged"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemClipboard.Copy"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemClipboard.Cut"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemClipboard.Paste"></member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControl">
+      <summary>This interface covers the minimal definition of a work item tracking control.</summary>
+    </member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControl.AfterUpdateDatasource">
+      <summary>This event is signaled by control implementations preceeded by BeforeUpdateDatasource to avoid invalidation notifications stemming from changes performed by the control itself.</summary>
+    </member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControl.BeforeUpdateDatasource">
+      <summary>This event is signaled by control implementations when updating Data Source followed by a signal to AfterUpdateDatasource to avoid invalidation notifications stemming from changes performed by the control itself.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControl.Clear">
+      <summary>Clears the current value of the control.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControl.FlushToDatasource">
+      <summary>Flushes the current control value to the data source (bound field).</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControl.InvalidateDatasource">
+      <summary>Invalidates the data source used by this control, which causes the control to reset its state based on the current field binding.</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControl.Properties">
+      <summary>Gets or sets the custom properties that can be used to initialize control state</summary>
+      <returns>Returns <see cref="T:System.Collections.Specialized.StringDictionary" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControl.ReadOnly">
+      <summary>Gets or sets a value indicating whether this control is read only or not.</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControl.SetSite(System.IServiceProvider)">
+      <summary>Allows platform to provide ServiceProvider implementation to control.</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControl.WorkItemDatasource">
+      <summary>Gets or sets the work item data source bound to this control.</summary>
+      <returns>Returns <see cref="T:System.Object" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControl.WorkItemFieldName">
+      <summary>The name of the field to be modified by the control.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControlHost">
+      <summary>Interface implemented by the host</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControlHost.SendToExcel(Microsoft.TeamFoundation.Client.TfsTeamProjectCollection,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Int32})"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControlHost.SendToMail(Microsoft.TeamFoundation.Client.TfsTeamProjectCollection,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Int32})"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControlHost.SendToProject(Microsoft.TeamFoundation.Client.TfsTeamProjectCollection,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Int32})"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControlHost.ShowQueryResults(Microsoft.TeamFoundation.Client.TfsTeamProjectCollection,System.String,System.String)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControlHost.ShowWorkItem(Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControlHost.SupportsSendToExcel">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControlHost.SupportsSendToMail">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControlHost.SupportsSendToProject">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControlHost2">
+      <summary>Interface implemented by the Work Item Host to provide functionality for displaying query results. This is an opt-out mechanism if this interface is not supported Show Query Result will continue to be supported.</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemControlHost2.SupportsShowQueryResults"></member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemFilter">
+      <summary>Interface to filter out certain items in CheckBoxResultGrid.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemFilter.ShouldFilterItem(Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem,System.String@,System.Drawing.Bitmap@)">
+      <summary>checks if a certain item should be filtered out in the CheckBoxResultGrid</summary>
+      <returns>one of the FilterReason enum values.</returns>
+      <param name="workItem">the workitem that we are interested in</param>
+      <param name="reason">the reason why the item is filtered, will be displayed in a tooltip</param>
+      <param name="icon">(optional)the icon to show instead of a check box if the item is not Valid (for optimal visual appearance use 11x11 icon), if null will use default icons</param>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemGridValueProvider"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemGridValueProvider.GetFieldValue(System.Object,System.Int32,System.Int32,System.Int32,System.Object@)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemGridValueProvider.GridCollectionReset(System.Object)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemGridValueProvider.IsItemDirty(System.Int32)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemGridValueProvider.ItemChanged"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemGridValueProvider.RegisterGrid(System.Object)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemGridValueProvider.UnregisterGrid(System.Object)"></member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemInformationProvider"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemInformationProvider.AlternateEditorText">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemInformationProvider.Id">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemInformationProvider.IsDirty">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemInformationProvider.IsNew">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemInformationProvider.LaunchAlternateEditor"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemInformationProvider.Message">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemInformationProvider.Prepare"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemInformationProvider.ShowWarning">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemInformationProvider.Type">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemToolTip"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemToolTip.Label">
+      <returns>Returns <see cref="T:System.Windows.Forms.Label" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemToolTip.ToolTip">
+      <returns>Returns <see cref="T:System.Windows.Forms.ToolTip" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemUserAction"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemUserAction.HighlightBackColor">
+      <returns>Returns <see cref="T:System.Drawing.Color" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemUserAction.HighlightForeColor">
+      <returns>Returns <see cref="T:System.Drawing.Color" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemUserAction.RequiredText">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemUserAction.UserActionRequired">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemUserAction.UserActionRequiredChanged"></member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.LabelPosition">
+      <summary>This enumeration lists all the different positions for the label (if there is one)</summary>
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.LabelPosition.None">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.LabelPosition.Top">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.LabelPosition.Left">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.LabelPosition.Right">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.LabelPosition.Bottom">
+      <summary />
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinkDialogRelatedLinkControl">
+      <summary>Child control of LinkDialog to show linktype specific control items</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinkDialogRelatedLinkControl.#ctor">
+      <summary>Constructor</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinkDialogRelatedLinkControl.CachedWorkItems">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinkDialogRelatedLinkControl.Dispose(System.Boolean)">
+      <summary>Clean up any resources being used.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinkDialogRelatedLinkControl.GetDisplayName(System.String)">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinkDialogRelatedLinkControl.GetUpdatedLink">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Client.Link" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinkDialogRelatedLinkControl.GetUpdatedLinks">
+      <summary>Returns new RelatedLink with user entered values</summary>
+      <returns>Returns <see cref="T:System.Collections.Generic.IEnumerable`1" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinkDialogRelatedLinkControl.Initialize(Microsoft.TeamFoundation.WorkItemTracking.Controls.IDialogControlHost,Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayMode,Microsoft.TeamFoundation.WorkItemTracking.Client.Link)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinkDialogRelatedLinkControl.Initialize(Microsoft.TeamFoundation.WorkItemTracking.Controls.ILinkDialogControlHost,Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayMode,Microsoft.TeamFoundation.WorkItemTracking.Client.Link,System.Boolean)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinkDialogRelatedLinkControl.UpdateEnabledStates"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinkDialogRelatedLinkControl.UpdateEnabledStates(Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItemLinkTypeEnd)"></member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.#ctor"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.Dispose(System.Boolean)">
+      <summary>Clean up any resources being used.</summary>
+      <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.Exec(System.Int32)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.IsBusy">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.LinkChanged(Microsoft.TeamFoundation.WorkItemTracking.Client.Link)">
+      <summary>Called when links are changed in underlying workitem object. WorkItemForm control tracks changes by using FieldChanged event, and calls this function on any link changes</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemClipboard#CanCopy">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemClipboard#CanCut">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemClipboard#CanPaste">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemClipboard#ClipboardStatusChanged"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemClipboard#Copy"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemClipboard#Cut"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemClipboard#Paste"></member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemControl#AfterUpdateDatasource"></member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemControl#BeforeUpdateDatasource"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemControl#Clear"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemControl#FlushToDatasource"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemControl#InvalidateDatasource"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemControl#SetSite(System.IServiceProvider)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.OnFontChanged(System.EventArgs)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.Properties">
+      <returns>Returns <see cref="T:System.Collections.Specialized.StringDictionary" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.ReadOnly">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.Status(System.Int32,System.Boolean@,System.Boolean@)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.StatusHandler">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IStatusHandler" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.WorkItemDatasource">
+      <returns>Returns <see cref="T:System.Object" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.LinksControl.WorkItemFieldName">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl">
+      <summary>PickWorkItemsControl is a UserControl for selecting Currituck workitems from a List that can be populated from a query retrieved from the portfolio server or from a simple picker query built from workitem Type, ID and Title words. The List can be single or multiple selection.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.#ctor(Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItemStore)">
+      <summary>No default constructor. Creates a multiSelection view.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.#ctor(Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItemStore,System.Boolean)">
+      <summary>No default constructor.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.#ctor(Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItemStore,System.Boolean,System.Boolean)">
+      <summary>Instantiates control.</summary>
+      <param name="preferTfsVisualStyle">Specifies if control should use TFS Themed Color Styling Conventions or opt out to stick with Winforms defaults.</param>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.BannerLabel">
+      <summary>Banner Text above the work item lookup method radio buttons</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.DisplayRowCount">
+      <summary>Gets the number of rows in the result grid.</summary>
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.Dispose(System.Boolean)">
+      <summary>Clean up any resources being used.</summary>
+      <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.ExcludedWorkItemIds">
+      <summary>IDs as strings.</summary>
+      <returns>Returns <see cref="T:System.Collections.Generic.List`1" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.FilterItemsNotInProject">
+      <summary>indicates whether to filter out work items that are not part of the selected project. If this property is set to 'true' and a query returns work items that are not members of the currently selected project then a dialog box is displayed and the work items are not shown.</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.GetCurrentlySelectedWorkItem">
+      <summary>Returns the selected (highlighted, not checked) work item in the list. Returns 'null' if there is no work item selected.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.GetWorkItemIds(System.Int32,System.Int32)">
+      <summary>Gets the work item IDs from the result grid of given range of display index.</summary>
+      <returns>List of work item IDs of giev range of display index.</returns>
+      <param name="startDisplayIndex">Start display index.</param>
+      <param name="endDisplayIndex">End display index.</param>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.GetWorkItemIndex(System.Int32)">
+      <summary>Gets the display index of given work item.</summary>
+      <returns>Display index of given work item.</returns>
+      <param name="workItemId">ID of the work item to get the display index.</param>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.IdRadioButtonEnabled">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.InitializeForPartialOpen">
+      <summary>indicates whether to initialize the returned work items for PartialOpen. If 'true', causes all WorkItemCollections retrieved to have the DefaultProjectHint method called.</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemFilter#ShouldFilterItem(Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem,System.String@,System.Drawing.Bitmap@)">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.FilterReason" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.MultiSelect">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.OnLoad(System.EventArgs)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.PickItemsFromRadioButtonEnabled">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.PickWorkItemsCountChanged"></member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.PickWorkItemsDoubleClicked"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.PopulateInitially">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.PortfolioDisplayName">
+      <summary>If this and PortfolioDisplayName are empty or null, then ProjectPickerControl better be enabled so user can select one. Value is passed to ProjectPickerControl, PickWorkItemsControl and ColumnsPickerControl child controls.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.QueryRadioButtonEnabled">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.ResetControlState">
+      <summary>Resets all properties to default values and resets controls to default states.</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.ResultsEmpty">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.SelectAllAfterRun">
+      <summary>Default is true. SingleSelection ListView will select only first item.</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.SelectedQueryId">
+      <returns>Returns <see cref="T:System.Guid" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.SelectedQueryName">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.SelectedRadioButton">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemsPickerRadioButton" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.SelectedWorkItems">
+      <summary>List of WorkItem objects selected in results view.</summary>
+      <returns>Returns <see cref="T:System.Collections.Generic.List`1" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.SelectedWorkItemTypeName">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.ToggleCheckState(Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem)">
+      <summary>Toggles the check box state for the selected item if the control is in 'MultiSelect' mode.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.ValidateAndApplyControlState">
+      <summary>Ensures control's properties are in a valid state to be displayed and applies them to the child controls; throws InvalidOperationException exceptions for errors. Called one time just before control's parent is displayed.</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.WorkItemFieldsToReturn">
+      <summary>Currituck Fields as strings.</summary>
+      <returns>Returns <see cref="T:System.Collections.Generic.List`1" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.WorkItemFilter">
+      <summary>Custom filter additional filtering. If nothing is set, then filtered by current properties</summary>
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemFilter" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.WorkItemIdsText">
+      <summary>The text in the work item Ids text box</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsControl.WorkItemSelectionChanged">
+      <summary>Occurs when the selected work items have changed.</summary>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsCountChangedEventHandler"></member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.PickWorkItemsDoubleClickedEventHandler"></member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.ProjectChangedEventArgs">
+      <summary>Simple EventArgs derived class for passing one argument (string) to an EventHandler as required by FxCop.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ProjectChangedEventArgs.#ctor(System.String)">
+      <summary>No default constructor.</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ProjectChangedEventArgs.NewProject">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.ProjectPickerControl">
+      <summary>ProjectPickerControl is a UserControl that uses a combobox for selecting a portfolio project from a specific domain namespace.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ProjectPickerControl.#ctor(Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItemStore)">
+      <summary>No default constructor.</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ProjectPickerControl.AnyProjectText">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ProjectPickerControl.Dispose(System.Boolean)">
+      <summary>Clean up any resources being used.</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ProjectPickerControl.Label">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ProjectPickerControl.PortfolioDisplayName">
+      <summary>If this and PortfolioDisplayName are empty or null, then ProjectPickerControl better be enabled so user can select one. Value is passed to ProjectPickerControl, PickWorkItemsControl and ColumnsPickerControl child controls.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.ProjectPickerControl.ProjectPickerProjectChanged"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ProjectPickerControl.ResetControlState">
+      <summary>Resets all properties to default values and resets controls to default states.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ProjectPickerControl.ValidateAndApplyControlState">
+      <summary>Ensures control's properties are in a valid state to be displayed and applies them to the child controls; throws InvalidOperationException exceptions for errors. Called one time just before control's parent is displayed.</summary>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.ProjectPickerProjectChangedEventHandler">
+      <summary>Friendly display-name.</summary>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl">
+      <summary>Infrastructure class. Not intended to be called directly from your code.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.#ctor">
+      <summary>Constructor, must also call Intialize before you use the builder</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.#ctor(Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItemStore,System.String)">
+      <summary>Constructs the builder and intializes with a specific team project</summary>
+      <param name="store">WorkItemStore of the query</param>
+      <param name="teamProjectName">Team Project name associated with the builder (must exist on the store)</param>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.CanDeleteSelectedCaluses"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.CanDeleteSelectedClauses">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.CanGroupSelectedCaluses"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.CanGroupSelectedClauses">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.CanInsertCaluse"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.CanInsertClause">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.CanUngroupSelectedCaluses"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.CanUngroupSelectedClauses">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.ClauseFocusChanged"></member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.ContextMenuPopup"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.DeleteSelectedClauses"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.Dispose(System.Boolean)"></member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.FilterExpressionChanged"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.FilterIsValid(System.String@)">
+      <summary>checks if the filter is valid</summary>
+      <returns>true if filter is valid, false otherwise</returns>
+      <param name="error">the error message if the filter is not valid</param>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.GenerateWiql(Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions)">
+      <summary>Generate a wiql string, throws if the filter expression is not valid</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.GroupSelectedClauses"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.Initialize(Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItemStore,System.String)">
+      <summary>Initializes the control.</summary>
+      <param name="store">WorkItemStore of the query</param>
+      <param name="teamProjectName">Team Project name associated with the builder (must exist on the store)</param>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.InsertClause"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.LinkingOptionsCollapsed">
+      <summary>set the collapse state for the linking options (OneHop mode only)</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.MaximumPreferredHeight">
+      <summary>the Maximum PreferredHeight for the control, this will be used in intermediate layout calculation.  This control will not recommend more than this (unless its smaller than minimumSize)</summary>
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.PreferredHeight">
+      <summary>PreferredHeight of the queryBuilder, for optimal layout the container control allow the builder to grow to this size or larger</summary>
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.PreferredHeightChanged"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.QueryType">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Client.QueryType" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.RestoreGridFocus"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.SetWiql(System.String)">
+      <summary>Sets the wiql expression of the builder (the select clause will be ignored)</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.QueryBuilderControl.UngroupSelectedClauses"></member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions">
+      <summary>This class encapsulates the two basic elements of the Result Options. 1. The list of Display Fields 2. The list of Sort Fields</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.#ctor"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.#ctor(Microsoft.TeamFoundation.WorkItemTracking.Client.FieldDefinitionCollection,System.String)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.#ctor(Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection,Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.#ctor(Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions,System.Boolean)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.CheckChangeFlag(Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.ChangeType,Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.ChangeType)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.ColumnWidthsToString">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.DetermineChange(Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions,Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions)">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.ChangeType" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.DisplayFields">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.GetDefaultColumnWidth(System.String,Microsoft.TeamFoundation.WorkItemTracking.Client.FieldDefinitionCollection)">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.GetOrderByClause(Microsoft.TeamFoundation.WorkItemTracking.Client.FieldDefinitionCollection)">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.GetSelectClause(Microsoft.TeamFoundation.WorkItemTracking.Client.FieldDefinitionCollection)">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.IsLinkQuery">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.IsTreeQuery">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.LoadColumnWidthsFromString(System.String)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.QueryType">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Client.QueryType" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.SetLinkingQuery(Microsoft.TeamFoundation.WorkItemTracking.Client.QueryType,System.Boolean,Microsoft.TeamFoundation.WorkItemTracking.Client.FieldDefinitionCollection)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.SortFields">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.ChangeType"></member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.ChangeType.None">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.ChangeType.Widths">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.ChangeType.Columns">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions.ChangeType.Sort">
+      <summary />
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortField">
+      <summary>This class abstracts the SortFields used in the Package.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortField.#ctor(System.String,System.Boolean)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortField.Ascending">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortField.Direction">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Client.SortType" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection">
+      <summary>This is a collection class that holds DisplayFields</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.#ctor"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.#ctor(Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.Add(Microsoft.TeamFoundation.WorkItemTracking.Controls.SortField)">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.AddRange(Microsoft.TeamFoundation.WorkItemTracking.Controls.SortField[])"></member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.Changed"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.Clear"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.Contains(Microsoft.TeamFoundation.WorkItemTracking.Controls.SortField)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.Contains(System.String)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.CopyTo(Microsoft.TeamFoundation.WorkItemTracking.Controls.SortField[],System.Int32)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.Count">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.Equals(System.Object)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.GetEnumerator">
+      <returns>Returns <see cref="T:System.Collections.IEnumerator" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.GetHashCode">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.IndexOf(Microsoft.TeamFoundation.WorkItemTracking.Controls.SortField)">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.IndexOf(System.String)">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.Insert(System.Int32,Microsoft.TeamFoundation.WorkItemTracking.Controls.SortField)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.IsReadOnly">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.Item(System.Int32)">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortField" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.Item(System.String)">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortField" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.Remove(Microsoft.TeamFoundation.WorkItemTracking.Controls.SortField)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.RemoveAt(System.Int32)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.System#Collections#ICollection#CopyTo(System.Array,System.Int32)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.System#Collections#ICollection#IsSynchronized">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.System#Collections#ICollection#SyncRoot">
+      <returns>Returns <see cref="T:System.Object" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.System#Collections#IList#Add(System.Object)">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.System#Collections#IList#Contains(System.Object)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.System#Collections#IList#IndexOf(System.Object)">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.System#Collections#IList#Insert(System.Int32,System.Object)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.System#Collections#IList#IsFixedSize">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.System#Collections#IList#Item(System.Int32)">
+      <returns>Returns <see cref="T:System.Object" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SortFieldCollection.System#Collections#IList#Remove(System.Object)"></member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.StoryboardLinkingHandler">
+      <summary>Provides a double-click handler for storyboard links stored in TFS and linked to a work item. From the comment on IClientLinking: "It should be explicitly declared as ComVisible to better work with the plugin architecture without dependency on COM visibility set for the assembly</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.StoryboardLinkingHandler.#ctor"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.StoryboardLinkingHandler.ExecuteDefaultAction(System.String,System.String)">
+      <summary>Opens the Uri associated with the specified storyboard Artifact Uri if it is possible in response to a request from the WIT client linking UI.</summary>
+      <returns>A boolean value indicating whether the Uri associated with the specified artifact Uri was opened successfully.</returns>
+      <param name="artifactUri">The TFS artifact Uri returned from the work item store.</param>
+      <param name="contextInfo">Context for the specified artifact.</param>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn">
+      <summary>Virtual Column (Field) class to passed to/from ColumnsPickerControl class.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn.#ctor(System.String,System.String,System.Boolean,System.Boolean)">
+      <summary>Used by the ColumnsPickerControl exclusively to set the requiredText</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn.#ctor(System.String,System.String,System.Boolean,System.Object,System.Boolean)">
+      <summary>No default constructor; non-empty Display string is always required.Display is the string shown in ColumnsPickerControl list box and probably displayed to user by caller. MappedDatabaseField is the Currituck field name that this column is mapped to. It may be the same as Display. It will be empty or null for non-mapped columns. Required means caller requires this field and ColumnsPickerControl cannot delete it. Example might be the ID field.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn.#ctor(System.String,System.String,System.String,System.Boolean,System.Object,System.Boolean)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn.DatabaseDisplayField">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn.Display">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn.GetFakedColumnReferenceNamePrefix">
+      <summary>This method is here so that other classes can retrieve mapped reference for faked columns Deserialization needs this name to re-construct the list after the workbook is loaded.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn.GetNextFakedColumnReferenceName">
+      <summary>We have to treat the faked columns to be the same as round trip columns However, faked columns do not have database fields to map against so we must have a reference name (which is mapped to a database field) This format of the faked reference name is System.Faked</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn.IsFaked">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn.IsFakedReferenceName(System.String,System.Int32@)">
+      <summary>Check the reference name is one of the "faked" name</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn.IsRequired">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn.IsSpecialField">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn.IsUserField">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn.MappedDatabaseField">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn.SpecialFieldInfo">
+      <returns>Returns <see cref="T:System.Object" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn.ToString">
+      <summary>Return DetailedDisplay if it is required (used exclusively in ColumnsPickerControl), otherwise return Display.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection">
+      <summary>Virtual Column (Field) List class to passed to/from ColumnsPickerControl class.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.#ctor"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.Add(Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn)">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.AddRange(Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.Clear"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.Clone">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.Contains(Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.ContainsDisplayName(System.String)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.CopyTo(Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection,System.Int32)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.CopyTo(System.Array,System.Int32)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.Count">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.FindVirtualColumn(System.String)">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.GetEnumerator">
+      <returns>Returns <see cref="T:System.Collections.Generic.IEnumerator`1" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.IndexOf(Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn)">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.Insert(System.Int32,Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.IsFixedSize">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.IsReadOnly">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.IsSynchronized">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.Item(System.Int32)">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.Remove(Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.RemoveAt(System.Int32)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.Sort(System.Collections.Generic.IComparer{Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn})"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.SyncRoot">
+      <returns>Returns <see cref="T:System.Object" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnCollection.System#Collections#IEnumerable#GetEnumerator">
+      <returns>Returns <see cref="T:System.Collections.IEnumerator" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnsComparer"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnsComparer.#ctor"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumnsComparer.Compare(Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn,Microsoft.TeamFoundation.WorkItemTracking.Controls.VirtualColumn)">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.WebpageControl"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WebpageControl.#ctor"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WebpageControl.Dispose(System.Boolean)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WebpageControl.InvalidateImmediately"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WebpageControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IStatusProvider#StatusHandler">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IStatusHandler" />.</returns>
+    </member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.WebpageControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemControl#AfterUpdateDatasource"></member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.WebpageControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemControl#BeforeUpdateDatasource"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WebpageControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemControl#Clear"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WebpageControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemControl#FlushToDatasource"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WebpageControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemControl#InvalidateDatasource"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WebpageControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemControl#SetSite(System.IServiceProvider)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WebpageControl.Navigate(System.Xml.Linq.XElement,System.Boolean)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WebpageControl.OnInvalidateDatasource"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WebpageControl.Properties">
+      <returns>Returns <see cref="T:System.Collections.Specialized.StringDictionary" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WebpageControl.ReadOnly">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WebpageControl.WorkItemDatasource">
+      <returns>Returns <see cref="T:System.Object" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WebpageControl.WorkItemFieldName">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl">
+      <summary>This is a control that will display controls that enable editing of a Work Item given 1. a reference to the work item 2. the form definition</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.#ctor"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.CachingEnabled">
+      <summary>A boolean flag to enable/disable the caching of work item forms.</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.CanCopy">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.CanCut">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.CanEnableIme">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.CanPaste">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.ClearCache">
+      <summary>Clears any currently cached work item forms.</summary>
+    </member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.ClipboardStatusChanged"></member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.ContextMenuPopup">
+      <summary>Event that is fired when the user right mouse clicks.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.Copy"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.Cut"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.Dispose(System.Boolean)">
+      <summary>Clean up any resources being used.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.FlushUserInput"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.FormDefinition">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.GetFirstFieldError">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.HandleFirstFieldError(System.String)">
+      <summary>Set focus to the first field that has an error and show the error message</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.Item">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.LayoutTargetName">
+      <summary>If specified this is the name that will be matched with Target attribute of the Layout element in the FORM definition of the Work Item Type. The default is "WinForms";</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.OnClipboardStatusChanged(System.EventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.OnContextMenuPopup(System.Drawing.Point)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.OnFontChanged(System.EventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.Paste"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.ReadOnly">
+      <summary>ReadOnly - Returns whether the view is currently readonly. Setting this property does display the view. You must call RenderView() for the change in ReadOnly to take effect.</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.RenderView">
+      <summary>RenderView - Render the view.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.RenderView(System.Boolean)">
+      <summary>RenderView - Render the view.</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.ServiceProvider">
+      <returns>Returns <see cref="T:System.IServiceProvider" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.ShowAllFieldErrors(System.String,System.Int32)">
+      <summary>Set focus to the first field that has an error and show the error message</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.StatusHandler">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IStatusHandler" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.UserActionRequiredBackColor">
+      <returns>Returns <see cref="T:System.Drawing.Color" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.UserActionRequiredForeColor">
+      <returns>Returns <see cref="T:System.Drawing.Color" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl.WndProc(System.Windows.Forms.Message@)"></member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemGridValueProviderEventArgs"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemGridValueProviderEventArgs.#ctor(Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemGridValueProviderEventArgs.Item">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemGridValueProviderEventHandler"></member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemInformationBar"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemInformationBar.#ctor"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemInformationBar.Refresh(Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemInformationProvider)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemInformationBar.Refresh(Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl,System.String,System.String)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemInformationBar.Refresh(Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl,System.String,System.String)"></member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemInformationProvider"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemInformationProvider.#ctor(Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemFormControl,System.String,System.String)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemInformationProvider.#ctor(Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl,System.String,System.String)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemInformationProvider.AlternateEditorText">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemInformationProvider.Id">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemInformationProvider.IsDirty">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemInformationProvider.IsNew">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemInformationProvider.LaunchAlternateEditor"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemInformationProvider.Message">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemInformationProvider.Prepare"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemInformationProvider.ShowWarning">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemInformationProvider.Type">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid">
+      <summary>This class provides a simple interface to display work items. Given a IResultListDataProvider and a ResultOptions object (or a WorkItemStore and a WIQL statement) the grid will display the contents of the WorkItemCollection or result tree for link queries. The user may add their own columns by use of Columns.Add and by implementing the event CellValueNeeded</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.#ctor">
+      <summary>Initializes a new instance of the WorkItemResultGrid using TFS themed color styling.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.#ctor(System.Boolean)">
+      <summary>Initializes a new instance of the WorkItemResultGrid.</summary>
+      <param name="preferTfsVisualStyle">Specifies if control should use TFS Themed Color Styling Conventions or stick with Winforms defaults.</param>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.BoldDirtyItems">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.CollectionChanging"></member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.ContextMenuPopup">
+      <summary>This event is fired when the user requests to show the context menu.</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.DisplayIsDirtyColumn">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.DisplayRowHeader">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.Dispose(System.Boolean)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.GetItemIndex(System.Int32)">
+      <summary>return the item index with this id</summary>
+      <returns>the index of the first item that has a match to this id, -1 if not found</returns>
+      <param name="id">work item id</param>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.GetSelectedIds">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.GetSelectedRows">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.InternalColumn"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.IsPointOnExpandCollapseImage(System.Int32,System.Drawing.Point)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.IsResettingRows">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.LoadFromQuery(Microsoft.TeamFoundation.WorkItemTracking.Client.Query)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.LoadFromWiql(Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItemStore,System.String)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnCellBeginEdit(System.Windows.Forms.DataGridViewCellCancelEventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnCellErrorTextNeeded(System.Windows.Forms.DataGridViewCellErrorTextNeededEventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnCellFormatting(System.Windows.Forms.DataGridViewCellFormattingEventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnCellMouseDown(System.Windows.Forms.DataGridViewCellMouseEventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnCellPainting(System.Windows.Forms.DataGridViewCellPaintingEventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnCellToolTipTextNeeded(System.Windows.Forms.DataGridViewCellToolTipTextNeededEventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnCellValueNeeded(System.Windows.Forms.DataGridViewCellValueEventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnCollectionChanging"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnColumnDisplayIndexChanged(System.Windows.Forms.DataGridViewColumnEventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnColumnDividerDoubleClick(System.Windows.Forms.DataGridViewColumnDividerDoubleClickEventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnColumnWidthChanged(System.Windows.Forms.DataGridViewColumnEventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnContextMenuPopup(System.Drawing.Point)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnCurrentCellChanged(System.EventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnDragDrop(System.Windows.Forms.DragEventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnDragLeave(System.EventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnDragOver(System.Windows.Forms.DragEventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnGotFocus(System.EventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnLostFocus(System.EventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnMouseClick(System.Windows.Forms.MouseEventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnMouseDown(System.Windows.Forms.MouseEventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnMouseMove(System.Windows.Forms.MouseEventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnMouseUp(System.Windows.Forms.MouseEventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnPaint(System.Windows.Forms.PaintEventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnResize(System.EventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnRowPrePaint(System.Windows.Forms.DataGridViewRowPrePaintEventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnScroll(System.Windows.Forms.ScrollEventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnSelectionChanged(System.EventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.OnValueProviderItemChanged(Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemGridValueProviderEventArgs)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.PauseBeforeFill">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.PreferTfsVisualStyle"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.RefreshGrid(System.Boolean,System.Boolean,System.Boolean)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.ResultCount">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.ResultOptions">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.ResultOptions" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.ResumeLayout"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.SetAccessibilityObjectName(System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.SetAllExpansion(System.Boolean)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.SetExpansionStateForCurrentSelection(System.Boolean)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.SortBackcolor">
+      <summary>Specifies Background color for the Sort Column. This is ignored when using Winforms default coloring.</summary>
+      <returns>Returns <see cref="T:System.Drawing.Color" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.SortForecolor">
+      <summary>Specifies Foreground color for the Sort Column. This is ignored when using Winforms default coloring.</summary>
+      <returns>Returns <see cref="T:System.Drawing.Color" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.StretchLastColumn">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.SuspendLayout"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.UpdateWidths(Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayFieldCollection)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.ValueProvider">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IWorkItemGridValueProvider" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.VirtualThumbTracking">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.WndProc(System.Windows.Forms.Message@)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.WorkItemCollection">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItemCollection" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.CollectionChangingEventHandler"></member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.ColumnInfo"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.ColumnInfo.#ctor(System.Int32,System.String,System.Boolean)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.ColumnInfo.#ctor(System.Int32,System.String,System.Boolean,Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayField)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.ColumnInfo.DisplayField">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.DisplayField" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.ColumnInfo.FieldId">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.ColumnInfo.IsSortable">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemResultGrid.ColumnInfo.Name">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemsPickerRadioButton">
+      <summary>Enumeration of radio buttons in the control so caller can set default.</summary>
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemsPickerRadioButton.PickItemsFrom">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemsPickerRadioButton.IdQuery">
+      <summary />
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.WorkItemsPickerRadioButton.Query">
+      <summary />
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.#ctor"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.CanCopy">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.CanCut">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.CanPaste">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.ContextMenuPopup"></member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.ContextMenuPopupEvent"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.Copy"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.Cut"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.Dispose"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.Dispose(System.Boolean)">
+      <summary>Clean up any resources being used.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.FlushUserInput"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.FormDefinition">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.GetFirstFieldError">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.GetHideControlBorders(System.Windows.DependencyObject)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.GetHideReadOnlyEmptyFields(System.Windows.DependencyObject)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.HandleFirstFieldError(System.String)">
+      <summary>Set focus to the first field that has an error and show the error message</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.HideControlBorders">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.HideControlBordersProperty"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.HideReadOnlyEmptyFields">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.HideReadOnlyEmptyFieldsProperty"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.Item">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem" />.</returns>
+    </member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.Microsoft#TeamFoundation#WorkItemTracking#Controls#IWorkItemClipboard#ClipboardStatusChanged"></member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.Part_WorkItemPanel"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.Paste"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.ReadOnly">
+      <summary>ReadOnly - Returns whether the view is currently readonly. Setting this property does render the view. You must call RenderView() for the change in ReadOnly to take effect.</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.RenderView">
+      <summary>RenderView - Render the view.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.RenderView(System.Boolean)">
+      <summary>RenderView - Render the view.</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.ServiceProvider">
+      <returns>Returns <see cref="T:System.IServiceProvider" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.SetHideControlBorders(System.Windows.DependencyObject,System.Boolean)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.SetHideReadOnlyEmptyFields(System.Windows.DependencyObject,System.Boolean)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.ShowAllFieldErrors(System.String,System.Int32)">
+      <summary>Set focus to the first field that has an error and show the error message</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.WpfControls.WorkItemControl.StatusHandler">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.IStatusHandler" />.</returns>
+    </member>
+  </members>
+</doc>

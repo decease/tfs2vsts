@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Microsoft.TeamFoundation.WorkItemTracking.ControlsCore</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl">
+      <summary>Handles Product Studio description field. Subclasses the RichEditBox, adds IsDirty property and a context menu.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.#ctor"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.AllowFormatting">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.BuildStyle(System.Collections.Generic.IDictionary{System.String,System.String})">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.Clear"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.ClearStatusText">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.DetachEventHandlers"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.Dispose(System.Boolean)">
+      <summary>Clean up any resources being used.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.EnsureCacheIsInitialized">
+      <summary>Ensure text cache is initialized with the control's interpretation of supplied HTML, to make sure that any differences are not treated as user-edits. This operation must be performed after RefreshText() any time the user acts to provide the control with focus (before any edits are made).</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.GetEditElement">
+      <returns>Returns <see cref="T:System.Windows.Forms.HtmlElement" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.GetHtmlFromSelectedRange(mshtml.IHTMLControlRange)">
+      <summary>Parses the selected range and returns corresponding html</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.GetStyleElem(System.Windows.Forms.HtmlElement,System.String)">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.GetTextInternal">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.GetVisibility(System.Windows.Forms.HtmlElement)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.GetWorkItemServerVersion">
+      <returns>Returns <see cref="T:Microsoft.TeamFoundation.WorkItemTracking.Common.WorkItemServerVersion" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.IsDirty">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.IsInputKey(System.Windows.Forms.Keys)">
+      <summary>Indicates if the specified key is input key. Adds enter, home, end, pg-up, pg-dn, navigations keys to base set Has side effect of marking selection state as busy when supplied an input key as HTML control does not expose standard input events for some keys (such as navigation).</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.IsInsideEdit(System.Windows.Forms.HtmlElement)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.IsReady">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.Label">
+      <returns>Returns <see cref="T:System.Windows.Forms.Label" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.NormalizeText(System.String)">
+      <summary>normalize text by removing trailing/leading spaces and making line breaks consistent.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.OnGotFocus(System.EventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.OnLinkClick(System.String)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.OnLinkClick(System.Windows.Forms.HtmlElement)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.OnNavigating(System.Windows.Forms.WebBrowserNavigatingEventArgs)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.OnPaste(System.Object,System.EventArgs)"></member>
+    <member name="E:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.OnTextChanged"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.ParseStyle(System.String)">
+      <returns>Returns <see cref="T:System.Collections.Generic.IDictionary`2" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.PasteClipboardImage"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.PreProcessMessage(System.Windows.Forms.Message@)">
+      <summary>Override logic here intercepts and selectively filters keyboard messages to base class.</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.PreProcessUrl(System.String)">
+      <summary>Protected method to perform navigation on trusted links. Implementations are responsible for validating the safety of any inputs they decide to handle.</summary>
+      <returns>True if url is handled, false if unsupported</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.ReadOnly">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.Retrieve">
+      <summary>Runs a normalization pass - when revised text differs, the text state is updated.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.SetElementEditable(System.Windows.Forms.HtmlElement,System.Boolean)">
+      <summary>Sets the 'ContentEditable' attribute on the specified element.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.SetStatusText(System.String)">
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.SetStyleElem(System.Windows.Forms.HtmlElement,System.String,System.String)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.SetVisibility(System.Windows.Forms.HtmlElement,System.Boolean)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.ShowContextMenu(System.Int32,System.Int32)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.ShowPrompt(System.Boolean)">
+      <summary>Base class implementation, intended to be overridden in derived classes which support prompting.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.SwapHtmlAttributes(System.Windows.Forms.HtmlElement,System.String,System.String)"></member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.Text">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.ToolTip">
+      <returns>Returns <see cref="T:System.Windows.Forms.ToolTip" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.UpdateToolTip">
+      <summary>Called when the tooltip should be updated.</summary>
+    </member>
+    <member name="P:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.Url">
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControl.WndProc(System.Windows.Forms.Message@)"></member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.HtmlControlEventHandler"></member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.POINT"></member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.POINT.x"></member>
+    <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Controls.POINT.y"></member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.SafeWebBrowser">
+      <summary>A safe version of WebBrowser control.</summary>
+    </member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SafeWebBrowser.#ctor"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SafeWebBrowser.CreateWebBrowserSiteBase">
+      <returns>Returns <see cref="T:System.Windows.Forms.WebBrowserSiteBase" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.SafeWebBrowser.IOleServiceProvider"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SafeWebBrowser.IOleServiceProvider.QueryService(System.Guid@,System.Guid@,System.IntPtr@)">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Controls.SafeWebBrowser.MyWebBrowserSite"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SafeWebBrowser.MyWebBrowserSite.#ctor(System.Windows.Forms.WebBrowser)"></member>
+    <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Controls.SafeWebBrowser.MyWebBrowserSite.Microsoft#TeamFoundation#WorkItemTracking#Controls#SafeWebBrowser#IOleServiceProvider#QueryService(System.Guid@,System.Guid@,System.IntPtr@)">
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+  </members>
+</doc>
