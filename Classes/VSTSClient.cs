@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using Microsoft.TeamFoundation.Client;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
@@ -52,21 +53,31 @@ namespace ConsoleApplication2.Classes
         }
 
 
-        public void CreateTestPlan(Dictionary<string, string> fields)
+        public int CreateTestPlan(WorkItemJson plan)
         {
             var wiType = _workItemStore.Projects[_teamProjectName].WorkItemTypes["Test Plan"];
 
-            CreateWorkItem(wiType, fields, _allowTestPlanFields);
+            return CreateWorkItem(wiType, plan.fields, _allowTestPlanFields);
         }
 
-        public void CreateTestCase(Dictionary<string, string> fields)
+        public int CreateTestSuite(WorkItemJson plan)
+        {
+            var wiType = _workItemStore.Projects[_teamProjectName].WorkItemTypes["Test Suite"];
+
+            // TODO: [om]
+            // if (suite.suiteType == TestSiutesJson.DynamicType) => Set Query
+
+            return CreateWorkItem(wiType, plan.fields, _allowTestSuiteFields);
+        }
+
+        public int CreateTestCase(Dictionary<string, string> fields)
         {
             var wiType = _workItemStore.Projects[_teamProjectName].WorkItemTypes["Test Case"];
 
-            CreateWorkItem(wiType, fields, _allowTestCaseFields);
+            return CreateWorkItem(wiType, fields, _allowTestCaseFields);
         }
 
-        private void CreateWorkItem(WorkItemType wiType, Dictionary<string, string> fields, List<string> allowFields)
+        private int CreateWorkItem(WorkItemType wiType, Dictionary<string, string> fields, List<string> allowFields)
         {
             var newWorkItem = new WorkItem(wiType);
 
@@ -78,15 +89,28 @@ namespace ConsoleApplication2.Classes
                 }
             }
 
-            newWorkItem["System.IterationPath"] = "CHMS\\Iteration 39";
+            newWorkItem["System.IterationPath"] = "CHMS\\Iteration 39 (catch up)";
+
+            if (fields.Keys.Any(k => k == "System.AssignedTo"))
+            {
+                newWorkItem.Description = $"Assigned to: {fields["System.AssignedTo"]}";
+            }
 
             if (newWorkItem.Validate().Count == 0)
             {
-                newWorkItem.Save();
+                //newWorkItem.Save();
+                //return newWorkItem.Id;
+
+                // TODO: [OM]
+                return (new Random()).Next(1, 1000);
             }
             else
             {
-                throw new Exception(string.Join("\n", newWorkItem.Validate()));
+                var messages = newWorkItem.Validate()
+                    .Cast<Field>()
+                    .Aggregate("", (current, field) => current + $"{field.Name}: {field.Value} ({field.Status})");
+
+                throw new Exception(string.Join("\n", messages));
             }
         }
 

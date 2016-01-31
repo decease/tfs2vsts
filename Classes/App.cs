@@ -3,54 +3,81 @@ using System.Linq;
 
 namespace ConsoleApplication2.Classes
 {
+    struct Relation
+    {
+        public int OldId { get; set; }
+        public int NewId { get; set; }
+
+        public Relation(int oldId, int newId)
+        {
+            OldId = oldId;
+            NewId = newId;
+        }
+    }
+
     class App
     {
         private readonly TFSClient _tfsClient = new TFSClient();
         private readonly VSTSClient _vstsRest = new VSTSClient();
 
+        private List<Relation> planRelations { get; set; } = new List<Relation>();
+        private List<Relation> suiteRelations { get; set; } = new List<Relation>();
+        private List<Relation> caseRelations { get; set; } = new List<Relation>();
+
         public void Run()
         {
-//            var id = 33373;
-            //var res = _tfsClient.GetTestSuites(id);
-
-            //return;
-
-            var testCaseIds = new List<int>();
-
-            var resultString = _tfsClient.GetTestPlans();
-            var testPlanIds = Utils.GetItemIds(resultString);
-
-            foreach (var planId in testPlanIds)
+            var testPlanJsons = _tfsClient.GetTestPlans();
+            
+            foreach (var plan in testPlanJsons.Take(1))
             {
-                var suitesString = _tfsClient.GetTestSuites(planId);
-                var testSuiteIds = Utils.GetTestSuiteItemIds(suitesString);
+                SaveTestPlan(plan);
+            }
+        }
 
-                foreach (var suiteId in testSuiteIds)
+        private void SaveTestPlan(TestPlanJson testPlan)
+        {
+            var suites = _tfsClient.GetTestSuites(testPlan.id);
+
+            // Create test plan and save relation
+            var planItem  = _tfsClient.GetWorkItems(testPlan.id).First();
+            var newId = _vstsRest.CreateTestPlan(planItem);
+            planRelations.Add(new Relation(testPlan.id, newId));
+
+            // LABEL A
+            foreach (var suite in suites)
+            {
+                SaveTestSuite(testPlan, suite);
+            }
+        }
+
+        private void SaveTestSuite(TestPlanJson testPlan, TestSiuteJson suite)
+        {
+            // Recursion (Get children)
+            var suiteExt = _tfsClient.GetTestSuiteWithChildren(testPlan.id, suite.id);
+
+            if (suiteExt.suites != null && suiteExt.suites.Count != 0)
+            {
+                foreach (var childSuiteInfo in suiteExt.suites)
                 {
-                    // Recursion (Get children)
-
-                    // if Dynamic => Set Query : vvvv
-                    var casesString = _tfsClient.GetTestCases(planId, suiteId);
-                    var ids = Utils.GetTestCaseItemIds(casesString);
-
-                    testCaseIds.AddRange(ids);
+                    var childSuite = _tfsClient.GetTestSuiteWithChildren(testPlan.id, childSuiteInfo.id);
+                    SaveTestSuite(testPlan, childSuite);
                 }
             }
 
-            testCaseIds = testCaseIds.Distinct()
-                .Take(10)
-                .ToList();
+            // Create test suite and save relation
+            var suiteItem = _tfsClient.GetWorkItems(suite.id).First();
+            var newId = _vstsRest.CreateTestSuite(suiteItem);
+            suiteRelations.Add(new Relation(suite.id, newId));
 
-            // Get all Test Cases
-            var testCase = _tfsClient.GetWorkItem(testCaseIds.ToArray());
+            var testCases = _tfsClient.GetTestCases(testPlan.id, suite.id);
 
-            // Get collections of all needed fields
-            var allFields = Utils.Transform(testCase);
-
-            // Create Test Cases in VSTS
-            foreach (var fields in allFields)
+            foreach (var testCaseInfo in testCases)
             {
-                //vstsRest.CreateTestCase(fields);
+                var testCaseItem = _tfsClient.GetWorkItems(testCaseInfo.id).First();
+                var newCaseId = _vstsRest.CreateTestCase(testCaseItem.fields);
+                caseRelations.Add(new Relation(testCaseItem.id, newCaseId));
+
+                Utils.Log($"Create TestCase with id({testCaseItem.id}) name({testCaseInfo.name})");
             }
         }
     }
