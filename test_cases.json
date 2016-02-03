@@ -1,392 +1,335 @@
 ﻿{
     "value": [
         {
-            "id": 33374,
-            "name": "Query-Based Master",
-            "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374",
-            "project": {
-                "id": "a19b574a-2c7c-4db0-98fc-0600b2200561",
-                "name": "CHMS",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"
+            "testCase": {
+                "id": "27303",
+                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/wit/workItems/27303",
+                "webUrl": "http://cb-van-tfs01:8080/tfs/web/wi.aspx?pcguid=e2d210a1-5220-4372-9423-e2fff833f968&id=27303"
             },
-            "plan": {
-                "id": "33373",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"
-            },
-            "revision": 87,
-            "testCaseCount": 0,
-            "suiteType": "StaticTestSuite",
-            "testCasesUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374/testcases",
-            "inheritDefaultConfigurations": false,
-            "defaultConfigurations": [
+            "pointAssignments": [
                 {
-                    "id": "2",
-                    "name": "Windows 7 and IE 9"
+                    "configuration": {
+                        "id": "2",
+                        "name": "Windows 7 and IE 9"
+                    },
+                    "tester": {
+                        "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "displayName": "Alisa Sergienko",
+                        "uniqueName": "COPEMAN\\asergienko",
+                        "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
+                    }
                 }
-            ],
-            "state": "In Progress",
-            "lastUpdatedBy": {
-                "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
-                "displayName": "Alisa Sergienko",
-                "uniqueName": "COPEMAN\\asergienko",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
-                "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
-            },
-            "lastUpdatedDate": "2015-12-25T07:59:50.493Z"
+            ]
         },
         {
-            "id": 33376,
-            "name": "Mobile App",
-            "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33376",
-            "project": {
-                "id": "a19b574a-2c7c-4db0-98fc-0600b2200561",
-                "name": "CHMS",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"
+            "testCase": {
+                "id": "27149",
+                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/wit/workItems/27149",
+                "webUrl": "http://cb-van-tfs01:8080/tfs/web/wi.aspx?pcguid=e2d210a1-5220-4372-9423-e2fff833f968&id=27149"
             },
-            "plan": {
-                "id": "33373",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"
-            },
-            "parent": {
-                "id": "33374",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374"
-            },
-            "queryString": "select [System.Id], [System.WorkItemType], [System.Title], [Microsoft.VSTS.Common.Priority], [System.AssignedTo], [System.AreaPath] from WorkItems where [System.TeamProject] = @project and [System.WorkItemType] in group 'Microsoft.TestCaseCategory' and [System.AreaPath] = 'CHMS\\Carebook – Mobile",
-            "revision": 11,
-            "testCaseCount": 53,
-            "suiteType": "DynamicTestSuite",
-            "testCasesUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33376/testcases",
-            "inheritDefaultConfigurations": true,
-            "lastPopulatedDate": "2016-01-28T06:49:38.81Z",
-            "state": "In Progress",
-            "lastUpdatedBy": {
-                "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
-                "displayName": "Alisa Sergienko",
-                "uniqueName": "COPEMAN\\asergienko",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
-                "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
-            },
-            "lastUpdatedDate": "2015-10-26T05:24:57.827Z"
+            "pointAssignments": [
+                {
+                    "configuration": {
+                        "id": "2",
+                        "name": "Windows 7 and IE 9"
+                    },
+                    "tester": {
+                        "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "displayName": "Alisa Sergienko",
+                        "uniqueName": "COPEMAN\\asergienko",
+                        "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
+                    }
+                }
+            ]
         },
         {
-            "id": 33377,
-            "name": "Carebook For Individuals",
-            "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33377",
-            "project": {
-                "id": "a19b574a-2c7c-4db0-98fc-0600b2200561",
-                "name": "CHMS",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"
+            "testCase": {
+                "id": "27157",
+                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/wit/workItems/27157",
+                "webUrl": "http://cb-van-tfs01:8080/tfs/web/wi.aspx?pcguid=e2d210a1-5220-4372-9423-e2fff833f968&id=27157"
             },
-            "plan": {
-                "id": "33373",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"
-            },
-            "parent": {
-                "id": "33374",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374"
-            },
-            "queryString": "select [System.Id], [System.WorkItemType], [System.Title], [Microsoft.VSTS.Common.Priority], [System.AssignedTo], [System.AreaPath] from WorkItems where [System.TeamProject] = @project and [System.WorkItemType] in group 'Microsoft.TestCaseCategory' and [System.AreaPath] = 'CHMS\\Carebook For Individuals",
-            "revision": 9,
-            "testCaseCount": 4,
-            "suiteType": "DynamicTestSuite",
-            "testCasesUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33377/testcases",
-            "inheritDefaultConfigurations": true,
-            "lastPopulatedDate": "2016-01-28T06:49:40.987Z",
-            "state": "In Progress",
-            "lastUpdatedBy": {
-                "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
-                "displayName": "Alisa Sergienko",
-                "uniqueName": "COPEMAN\\asergienko",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
-                "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
-            },
-            "lastUpdatedDate": "2016-01-22T08:01:54.457Z"
+            "pointAssignments": [
+                {
+                    "configuration": {
+                        "id": "2",
+                        "name": "Windows 7 and IE 9"
+                    },
+                    "tester": {
+                        "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "displayName": "Alisa Sergienko",
+                        "uniqueName": "COPEMAN\\asergienko",
+                        "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
+                    }
+                }
+            ]
         },
         {
-            "id": 33378,
-            "name": "Providers Carebook",
-            "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33378",
-            "project": {
-                "id": "a19b574a-2c7c-4db0-98fc-0600b2200561",
-                "name": "CHMS",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"
+            "testCase": {
+                "id": "27212",
+                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/wit/workItems/27212",
+                "webUrl": "http://cb-van-tfs01:8080/tfs/web/wi.aspx?pcguid=e2d210a1-5220-4372-9423-e2fff833f968&id=27212"
             },
-            "plan": {
-                "id": "33373",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"
-            },
-            "parent": {
-                "id": "33374",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374"
-            },
-            "queryString": "select [System.Id], [System.WorkItemType], [System.Title], [Microsoft.VSTS.Common.Priority], [System.AssignedTo], [System.AreaPath] from WorkItems where [System.TeamProject] = @project and [System.WorkItemType] in group 'Microsoft.TestCaseCategory' and [System.AreaPath] under 'CHMS\\Carebook for Providers",
-            "revision": 3,
-            "testCaseCount": 9,
-            "suiteType": "DynamicTestSuite",
-            "testCasesUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33378/testcases",
-            "inheritDefaultConfigurations": true,
-            "lastPopulatedDate": "2016-01-28T06:49:42.44Z",
-            "state": "In Progress",
-            "lastUpdatedBy": {
-                "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
-                "displayName": "Alisa Sergienko",
-                "uniqueName": "COPEMAN\\asergienko",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
-                "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
-            },
-            "lastUpdatedDate": "2015-10-26T04:51:48.187Z"
+            "pointAssignments": [
+                {
+                    "configuration": {
+                        "id": "2",
+                        "name": "Windows 7 and IE 9"
+                    },
+                    "tester": {
+                        "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "displayName": "Alisa Sergienko",
+                        "uniqueName": "COPEMAN\\asergienko",
+                        "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
+                    }
+                }
+            ]
         },
         {
-            "id": 33380,
-            "name": "Medisys client",
-            "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33380",
-            "project": {
-                "id": "a19b574a-2c7c-4db0-98fc-0600b2200561",
-                "name": "CHMS",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"
+            "testCase": {
+                "id": "27220",
+                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/wit/workItems/27220",
+                "webUrl": "http://cb-van-tfs01:8080/tfs/web/wi.aspx?pcguid=e2d210a1-5220-4372-9423-e2fff833f968&id=27220"
             },
-            "plan": {
-                "id": "33373",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"
-            },
-            "parent": {
-                "id": "33374",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374"
-            },
-            "queryString": "select [System.Id], [System.WorkItemType], [System.Title], [Microsoft.VSTS.Common.Priority], [System.AssignedTo], [System.AreaPath] from WorkItems where [System.TeamProject] = @project and [System.WorkItemType] in group 'Microsoft.TestCaseCategory' and [System.AreaPath] under 'CHMS\\Medibook",
-            "revision": 3,
-            "testCaseCount": 11,
-            "suiteType": "DynamicTestSuite",
-            "testCasesUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33380/testcases",
-            "inheritDefaultConfigurations": true,
-            "lastPopulatedDate": "2016-01-28T06:49:44.22Z",
-            "state": "In Progress",
-            "lastUpdatedBy": {
-                "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
-                "displayName": "Alisa Sergienko",
-                "uniqueName": "COPEMAN\\asergienko",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
-                "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
-            },
-            "lastUpdatedDate": "2015-10-26T05:17:08.99Z"
+            "pointAssignments": [
+                {
+                    "configuration": {
+                        "id": "2",
+                        "name": "Windows 7 and IE 9"
+                    },
+                    "tester": {
+                        "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "displayName": "Alisa Sergienko",
+                        "uniqueName": "COPEMAN\\asergienko",
+                        "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
+                    }
+                }
+            ]
         },
         {
-            "id": 33382,
-            "name": "Admin: Account Management",
-            "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33382",
-            "project": {
-                "id": "a19b574a-2c7c-4db0-98fc-0600b2200561",
-                "name": "CHMS",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"
+            "testCase": {
+                "id": "27250",
+                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/wit/workItems/27250",
+                "webUrl": "http://cb-van-tfs01:8080/tfs/web/wi.aspx?pcguid=e2d210a1-5220-4372-9423-e2fff833f968&id=27250"
             },
-            "plan": {
-                "id": "33373",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"
-            },
-            "parent": {
-                "id": "33374",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374"
-            },
-            "queryString": "select [System.Id], [System.WorkItemType], [System.Title], [Microsoft.VSTS.Common.Priority], [System.AssignedTo], [System.AreaPath] from WorkItems where [System.TeamProject] = @project and [System.WorkItemType] in group 'Microsoft.TestCaseCategory' and [System.AreaPath] under 'CHMS\\Carebook For Individuals\\Admin\\Account Management",
-            "revision": 3,
-            "testCaseCount": 5,
-            "suiteType": "DynamicTestSuite",
-            "testCasesUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33382/testcases",
-            "inheritDefaultConfigurations": true,
-            "lastPopulatedDate": "2016-01-28T06:49:46.007Z",
-            "state": "In Progress",
-            "lastUpdatedBy": {
-                "id": "93c1d1c6-da75-4137-b81f-d733abf8386f",
-                "displayName": "Sofya Berezovskaya",
-                "uniqueName": "COPEMAN\\sberez",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/93c1d1c6-da75-4137-b81f-d733abf8386f",
-                "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=93c1d1c6-da75-4137-b81f-d733abf8386f"
-            },
-            "lastUpdatedDate": "2015-10-09T03:18:54.63Z"
+            "pointAssignments": [
+                {
+                    "configuration": {
+                        "id": "2",
+                        "name": "Windows 7 and IE 9"
+                    },
+                    "tester": {
+                        "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "displayName": "Alisa Sergienko",
+                        "uniqueName": "COPEMAN\\asergienko",
+                        "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
+                    }
+                }
+            ]
         },
         {
-            "id": 33383,
-            "name": "Admin: Company Organization",
-            "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33383",
-            "project": {
-                "id": "a19b574a-2c7c-4db0-98fc-0600b2200561",
-                "name": "CHMS",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"
+            "testCase": {
+                "id": "27252",
+                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/wit/workItems/27252",
+                "webUrl": "http://cb-van-tfs01:8080/tfs/web/wi.aspx?pcguid=e2d210a1-5220-4372-9423-e2fff833f968&id=27252"
             },
-            "plan": {
-                "id": "33373",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"
-            },
-            "parent": {
-                "id": "33374",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374"
-            },
-            "queryString": "select [System.Id], [System.WorkItemType], [System.Title], [Microsoft.VSTS.Common.Priority], [System.AssignedTo], [System.AreaPath] from WorkItems where [System.TeamProject] = @project and [System.WorkItemType] in group 'Microsoft.TestCaseCategory' and [System.AreaPath] under 'CHMS\\Carebook For Individuals\\Admin\\Company Organization",
-            "revision": 2,
-            "testCaseCount": 5,
-            "suiteType": "DynamicTestSuite",
-            "testCasesUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33383/testcases",
-            "inheritDefaultConfigurations": true,
-            "lastPopulatedDate": "2016-01-28T06:49:47.433Z",
-            "state": "In Progress",
-            "lastUpdatedBy": {
-                "id": "93c1d1c6-da75-4137-b81f-d733abf8386f",
-                "displayName": "Sofya Berezovskaya",
-                "uniqueName": "COPEMAN\\sberez",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/93c1d1c6-da75-4137-b81f-d733abf8386f",
-                "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=93c1d1c6-da75-4137-b81f-d733abf8386f"
-            },
-            "lastUpdatedDate": "2015-10-09T03:19:36.223Z"
+            "pointAssignments": [
+                {
+                    "configuration": {
+                        "id": "2",
+                        "name": "Windows 7 and IE 9"
+                    },
+                    "tester": {
+                        "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "displayName": "Alisa Sergienko",
+                        "uniqueName": "COPEMAN\\asergienko",
+                        "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
+                    }
+                }
+            ]
         },
         {
-            "id": 37147,
-            "name": "My Providers",
-            "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37147",
-            "project": {
-                "id": "a19b574a-2c7c-4db0-98fc-0600b2200561",
-                "name": "CHMS",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"
+            "testCase": {
+                "id": "27264",
+                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/wit/workItems/27264",
+                "webUrl": "http://cb-van-tfs01:8080/tfs/web/wi.aspx?pcguid=e2d210a1-5220-4372-9423-e2fff833f968&id=27264"
             },
-            "plan": {
-                "id": "33373",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"
-            },
-            "parent": {
-                "id": "33374",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374"
-            },
-            "queryString": "select [System.Id], [System.WorkItemType], [System.Title], [Microsoft.VSTS.Common.Priority], [System.AssignedTo], [System.AreaPath] from WorkItems where [System.TeamProject] = @project and [System.WorkItemType] in group 'Microsoft.TestCaseCategory' and [System.AreaPath] under 'CHMS\\Carebook For Individuals\\My Providers",
-            "revision": 2,
-            "testCaseCount": 18,
-            "suiteType": "DynamicTestSuite",
-            "testCasesUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37147/testcases",
-            "inheritDefaultConfigurations": true,
-            "lastPopulatedDate": "2016-01-28T06:49:48.867Z",
-            "state": "In Progress",
-            "lastUpdatedBy": {
-                "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
-                "displayName": "Alisa Sergienko",
-                "uniqueName": "COPEMAN\\asergienko",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
-                "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
-            },
-            "lastUpdatedDate": "2015-10-20T03:15:13.287Z"
+            "pointAssignments": [
+                {
+                    "configuration": {
+                        "id": "2",
+                        "name": "Windows 7 and IE 9"
+                    },
+                    "tester": {
+                        "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "displayName": "Alisa Sergienko",
+                        "uniqueName": "COPEMAN\\asergienko",
+                        "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
+                    }
+                }
+            ]
         },
         {
-            "id": 37148,
-            "name": "Avatars",
-            "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37148",
-            "project": {
-                "id": "a19b574a-2c7c-4db0-98fc-0600b2200561",
-                "name": "CHMS",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"
+            "testCase": {
+                "id": "27298",
+                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/wit/workItems/27298",
+                "webUrl": "http://cb-van-tfs01:8080/tfs/web/wi.aspx?pcguid=e2d210a1-5220-4372-9423-e2fff833f968&id=27298"
             },
-            "plan": {
-                "id": "33373",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"
-            },
-            "parent": {
-                "id": "33374",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374"
-            },
-            "queryString": "select [System.Id], [System.WorkItemType], [System.Title], [Microsoft.VSTS.Common.Priority], [System.AssignedTo], [System.AreaPath] from WorkItems where [System.TeamProject] = @project and [System.WorkItemType] in group 'Microsoft.TestCaseCategory' and [System.AreaPath] under 'CHMS\\Carebook For Individuals\\Avatars",
-            "revision": 2,
-            "testCaseCount": 3,
-            "suiteType": "DynamicTestSuite",
-            "testCasesUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37148/testcases",
-            "inheritDefaultConfigurations": true,
-            "lastPopulatedDate": "2016-01-28T06:49:50.64Z",
-            "state": "In Progress",
-            "lastUpdatedBy": {
-                "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
-                "displayName": "Alisa Sergienko",
-                "uniqueName": "COPEMAN\\asergienko",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
-                "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
-            },
-            "lastUpdatedDate": "2015-10-20T03:24:05.11Z"
+            "pointAssignments": [
+                {
+                    "configuration": {
+                        "id": "2",
+                        "name": "Windows 7 and IE 9"
+                    },
+                    "tester": {
+                        "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "displayName": "Alisa Sergienko",
+                        "uniqueName": "COPEMAN\\asergienko",
+                        "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
+                    }
+                }
+            ]
         },
         {
-            "id": 37149,
-            "name": "Documents",
-            "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37149",
-            "project": {
-                "id": "a19b574a-2c7c-4db0-98fc-0600b2200561",
-                "name": "CHMS",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"
+            "testCase": {
+                "id": "27301",
+                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/wit/workItems/27301",
+                "webUrl": "http://cb-van-tfs01:8080/tfs/web/wi.aspx?pcguid=e2d210a1-5220-4372-9423-e2fff833f968&id=27301"
             },
-            "plan": {
-                "id": "33373",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"
-            },
-            "parent": {
-                "id": "33374",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374"
-            },
-            "queryString": "select [System.Id], [System.WorkItemType], [System.Title], [Microsoft.VSTS.Common.Priority], [System.AssignedTo], [System.AreaPath] from WorkItems where [System.TeamProject] = @project and [System.WorkItemType] in group 'Microsoft.TestCaseCategory' and [System.AreaPath] under 'CHMS\\Carebook For Individuals\\Documents+Images",
-            "revision": 2,
-            "testCaseCount": 12,
-            "suiteType": "DynamicTestSuite",
-            "testCasesUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37149/testcases",
-            "inheritDefaultConfigurations": true,
-            "lastPopulatedDate": "2016-01-28T06:49:52.073Z",
-            "state": "In Progress",
-            "lastUpdatedBy": {
-                "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
-                "displayName": "Alisa Sergienko",
-                "uniqueName": "COPEMAN\\asergienko",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
-                "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
-            },
-            "lastUpdatedDate": "2015-10-20T03:24:58.663Z"
+            "pointAssignments": [
+                {
+                    "configuration": {
+                        "id": "2",
+                        "name": "Windows 7 and IE 9"
+                    },
+                    "tester": {
+                        "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "displayName": "Alisa Sergienko",
+                        "uniqueName": "COPEMAN\\asergienko",
+                        "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
+                    }
+                }
+            ]
         },
         {
-            "id": 37150,
-            "name": "File Storage",
-            "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37150",
-            "project": {
-                "id": "a19b574a-2c7c-4db0-98fc-0600b2200561",
-                "name": "CHMS",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"
+            "testCase": {
+                "id": "27328",
+                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/wit/workItems/27328",
+                "webUrl": "http://cb-van-tfs01:8080/tfs/web/wi.aspx?pcguid=e2d210a1-5220-4372-9423-e2fff833f968&id=27328"
             },
-            "plan": {
-                "id": "33373",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"
-            },
-            "parent": {
-                "id": "33374",
-                "name": "Query-Based Master",
-                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374"
-            },
-            "queryString": "select [System.Id], [System.WorkItemType], [System.Title], [Microsoft.VSTS.Common.Priority], [System.AssignedTo], [System.AreaPath] from WorkItems where [System.TeamProject] = @project and [System.WorkItemType] in group 'Microsoft.TestCaseCategory' and [System.AreaPath] under 'CHMS\\Carebook For Individuals\\File Storage",
-            "revision": 2,
-            "testCaseCount": 13,
-            "suiteType": "DynamicTestSuite",
-            "testCasesUr...\\asergienko",
-            "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
-            "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
+            "pointAssignments": [
+                {
+                    "configuration": {
+                        "id": "2",
+                        "name": "Windows 7 and IE 9"
+                    },
+                    "tester": {
+                        "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "displayName": "Alisa Sergienko",
+                        "uniqueName": "COPEMAN\\asergienko",
+                        "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
+                    }
+                }
+            ]
         },
-        "lastUpdatedDate",
-        :
-        "2015-10-23T00:21:46.997Z"
-},{"id":37291,"name":"PRM: Regular message","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37291","project":{"id":"a19b574a-2c7c-4db0-98fc-0600b2200561","name":"CHMS","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"},"plan":{"id":"33373","name":"Query-Based Master","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"},"parent":{"id":"33374","name":"Query-Based Master","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374"},"queryString":"select [System.Id], [System.WorkItemType], [System.Title], [Microsoft.VSTS.Common.Priority], [System.AssignedTo], [System.AreaPath] from WorkItems where [System.TeamProject] = @project and [System.WorkItemType] in group 'Microsoft.TestCaseCategory' and [System.AreaPath] = 'CHMS\\Carebook For Individuals\\PRM\\Regular message'","revision":3,"testCaseCount":56,"suiteType":"DynamicTestSuite","testCasesUrl":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37291/testcases","inheritDefaultConfigurations":true,"lastPopulatedDate":"2016-01-28T06:50:57.26Z","state":"In Progress","lastUpdatedBy":{"id":"a7fdeeab-b926-46b5-81af-47a5d0e19acf","displayName":"Alisa Sergienko","uniqueName":"COPEMAN\\asergienko","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf","imageUrl":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"},"lastUpdatedDate":"2015-10-23T01:03:24.767Z"},{"id":37292,"name":"PRM: Change message","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37292","project":{"id":"a19b574a-2c7c-4db0-98fc-0600b2200561","name":"CHMS","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"},"plan":{"id":"33373","name":"Query-Based Master","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"},"parent":{"id":"33374","name":"Query-Based Master","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374"},"queryString":"select [System.Id], [System.WorkItemType], [System.Title], [Microsoft.VSTS.Common.Priority], [System.AssignedTo], [System.AreaPath] from WorkItems where [System.TeamProject] = @project and [System.WorkItemType] in group 'Microsoft.TestCaseCategory' and [System.AreaPath] = 'CHMS\\Carebook For Individuals\\PRM\\Change message'","revision":2,"testCaseCount":16,"suiteType":"DynamicTestSuite","testCasesUrl":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37292/testcases","inheritDefaultConfigurations":true,"lastPopulatedDate":"2016-01-28T06:50:59.427Z","state":"In Progress","lastUpdatedBy":{"id":"a7fdeeab-b926-46b5-81af-47a5d0e19acf","displayName":"Alisa Sergienko","uniqueName":"COPEMAN\\asergienko","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf","imageUrl":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"},"lastUpdatedDate":"2015-10-23T01:11:31.497Z"},{"id":37304,"name":"Risks: Questionnaire","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37304","project":{"id":"a19b574a-2c7c-4db0-98fc-0600b2200561","name":"CHMS","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"},"plan":{"id":"33373","name":"Query-Based Master","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"},"parent":{"id":"33374","name":"Query-Based Master","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374"},"queryString":"select [System.Id], [System.WorkItemType], [System.Title], [Microsoft.VSTS.Common.Priority], [System.AssignedTo], [System.AreaPath] from WorkItems where [System.TeamProject] = @project and [System.WorkItemType] in group 'Microsoft.TestCaseCategory' and [System.AreaPath] = 'CHMS\\Carebook For Individuals\\Risks\\Questionnaire'","revision":2,"testCaseCount":11,"suiteType":"DynamicTestSuite","testCasesUrl":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37304/testcases","inheritDefaultConfigurations":true,"lastPopulatedDate":"2016-01-28T06:51:01.213Z","state":"In Progress","lastUpdatedBy":{"id":"a7fdeeab-b926-46b5-81af-47a5d0e19acf","displayName":"Alisa Sergienko","uniqueName":"COPEMAN\\asergienko","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf","imageUrl":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"},"lastUpdatedDate":"2015-10-23T03:55:16.09Z"},{"id":37305,"name":"Risks: Wellness","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37305","project":{"id":"a19b574a-2c7c-4db0-98fc-0600b2200561","name":"CHMS","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"},"plan":{"id":"33373","name":"Query-Based Master","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"},"parent":{"id":"33374","name":"Query-Based Master","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374"},"queryString":"select [System.Id], [System.WorkItemType], [System.Title], [Microsoft.VSTS.Common.Priority], [System.AssignedTo], [System.AreaPath] from WorkItems where [System.TeamProject] = @project and [System.WorkItemType] in group 'Microsoft.TestCaseCategory' and [System.AreaPath] = 'CHMS\\Carebook For Individuals\\Risks\\Wellness Risk'","revision":3,"testCaseCount":18,"suiteType":"DynamicTestSuite","testCasesUrl":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37305/testcases","inheritDefaultConfigurations":true,"lastPopulatedDate":"2016-01-28T06:51:03.013Z","state":"In Progress","lastUpdatedBy":{"id":"a7fdeeab-b926-46b5-81af-47a5d0e19acf","displayName":"Alisa Sergienko","uniqueName":"COPEMAN\\asergienko","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf","imageUrl":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"},"lastUpdatedDate":"2015-10-23T04:19:30.923Z"},{"id":37308,"name":"UI automation tests","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37308","project":{"id":"a19b574a-2c7c-4db0-98fc-0600b2200561","name":"CHMS","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"},"plan":{"id":"33373","name":"Query-Based Master","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"},"parent":{"id":"33374","name":"Query-Based Master","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374"},"queryString":"select [System.Id], [System.WorkItemType], [System.Title], [Microsoft.VSTS.Common.Priority], [System.AssignedTo], [System.AreaPath] from WorkItems where [System.TeamProject] = @project and [System.WorkItemType] in group 'Microsoft.TestCaseCategory' and [System.AreaPath] = 'CHMS\\UI automation tests'","revision":2,"testCaseCount":6,"suiteType":"DynamicTestSuite","testCasesUrl":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37308/testcases","inheritDefaultConfigurations":true,"lastPopulatedDate":"2016-01-28T06:51:04.8Z","state":"In Progress","lastUpdatedBy":{"id":"a7fdeeab-b926-46b5-81af-47a5d0e19acf","displayName":"Alisa Sergienko","uniqueName":"COPEMAN\\asergienko","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf","imageUrl":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"},"lastUpdatedDate":"2015-10-23T04:20:08.307Z"},{"id":37310,"name":"Risks: Detailed Risk pages","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37310","project":{"id":"a19b574a-2c7c-4db0-98fc-0600b2200561","name":"CHMS","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"},"plan":{"id":"33373","name":"Query-Based Master","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"},"parent":{"id":"33374","name":"Query-Based Master","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374"},"queryString":"select [System.Id], [System.WorkItemType], [System.Title], [Microsoft.VSTS.Common.Priority], [System.AssignedTo], [System.AreaPath] from WorkItems where [System.TeamProject] = @project and [System.WorkItemType] in group 'Microsoft.TestCaseCategory' and [System.AreaPath] = 'CHMS\\Carebook For Individuals\\Risks\\Detailed Risk pages'","revision":2,"testCaseCount":21,"suiteType":"DynamicTestSuite","testCasesUrl":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37310/testcases","inheritDefaultConfigurations":true,"lastPopulatedDate":"2016-01-28T06:51:06.227Z","state":"In Progress","lastUpdatedBy":{"id":"a7fdeeab-b926-46b5-81af-47a5d0e19acf","displayName":"Alisa Sergienko","uniqueName":"COPEMAN\\asergienko","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf","imageUrl":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"},"lastUpdatedDate":"2015-10-23T04:34:05.78Z"},{"id":37380,"name":"Health Profile: Medical section","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37380","project":{"id":"a19b574a-2c7c-4db0-98fc-0600b2200561","name":"CHMS","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"},"plan":{"id":"33373","name":"Query-Based Master","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"},"parent":{"id":"33374","name":"Query-Based Master","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374"},"queryString":"select [System.Id], [System.WorkItemType], [System.Title], [Microsoft.VSTS.Common.Priority], [System.AssignedTo], [System.AreaPath] from WorkItems where [System.TeamProject] = @project and [System.WorkItemType] in group 'Microsoft.TestCaseCategory' and [System.AreaPath] under 'CHMS\\Carebook For Individuals\\Health Profile\\Medical section'","revision":3,"testCaseCount":32,"suiteType":"DynamicTestSuite","testCasesUrl":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37380/testcases","inheritDefaultConfigurations":true,"lastPopulatedDate":"2016-01-28T06:51:08.083Z","state":"In Progress","lastUpdatedBy":{"id":"a7fdeeab-b926-46b5-81af-47a5d0e19acf","displayName":"Alisa Sergienko","uniqueName":"COPEMAN\\asergienko","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf","imageUrl":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"},"lastUpdatedDate":"2015-10-26T04:58:32.83Z"},{"id":37381,"name":"Health Profile: Lifestyle section","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37381","project":{"id":"a19b574a-2c7c-4db0-98fc-0600b2200561","name":"CHMS","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"},"plan":{"id":"33373","name":"Query-Based Master","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"},"parent":{"id":"33374","name":"Query-Based Master","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374"},"queryString":"select [System.Id], [System.WorkItemType], [System.Title], [Microsoft.VSTS.Common.Priority], [System.AssignedTo], [System.AreaPath] from WorkItems where [System.TeamProject] = @project and [System.WorkItemType] in group 'Microsoft.TestCaseCategory' and [System.AreaPath] under 'CHMS\\Carebook For Individuals\\Health Profile\\Lifestyle section'","revision":2,"testCaseCount":26,"suiteType":"DynamicTestSuite","testCasesUrl":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37381/testcases","inheritDefaultConfigurations":true,"lastPopulatedDate":"2016-01-28T06:51:09.887Z","state":"In Progress","lastUpdatedBy":{"id":"a7fdeeab-b926-46b5-81af-47a5d0e19acf","displayName":"Alisa Sergienko","uniqueName":"COPEMAN\\asergienko","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf","imageUrl":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"},"lastUpdatedDate":"2015-10-26T04:59:10.077Z"},{"id":37382,"name":"Health Profile: Personal Notes","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37382","project":{"id":"a19b574a-2c7c-4db0-98fc-0600b2200561","name":"CHMS","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"},"plan":{"id":"33373","name":"Query-Based Master","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"},"parent":{"id":"33374","name":"Query-Based Master","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374"},"queryString":"select [System.Id], [System.WorkItemType], [System.Title], [Microsoft.VSTS.Common.Priority], [System.AssignedTo], [System.AreaPath] from WorkItems where [System.TeamProject] = @project and [System.WorkItemType] in group 'Microsoft.TestCaseCategory' and [System.AreaPath] = 'CHMS\\Carebook For Individuals\\Health Profile\\Personal Notes page'","revision":2,"testCaseCount":7,"suiteType":"DynamicTestSuite","testCasesUrl":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37382/testcases","inheritDefaultConfigurations":true,"lastPopulatedDate":"2016-01-28T06:51:11.663Z","state":"In Progress","lastUpdatedBy":{"id":"a7fdeeab-b926-46b5-81af-47a5d0e19acf","displayName":"Alisa Sergienko","uniqueName":"COPEMAN\\asergienko","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf","imageUrl":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"},"lastUpdatedDate":"2015-10-26T05:03:22.827Z"},{"id":37384,"name":"Home: Family Calendar","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37384","project":{"id":"a19b574a-2c7c-4db0-98fc-0600b2200561","name":"CHMS","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/projects/CHMS"},"plan":{"id":"33373","name":"Query-Based Master","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373"},"parent":{"id":"33374","name":"Query-Based Master","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/33374"},"queryString":"select [System.Id], [System.WorkItemType], [System.Title], [Microsoft.VSTS.Common.Priority], [System.AssignedTo], [System.AreaPath] from WorkItems where [System.TeamProject] = @project and [System.WorkItemType] in group 'Microsoft.TestCaseCategory' and [System.AreaPath] = 'CHMS\\Carebook For Individuals\\Home\\Family Calendar'","revision":2,"testCaseCount":16,"suiteType":"DynamicTestSuite","testCasesUrl":"http://cb-van-tfs01:8080/tfs/DefaultCollection/CHMS/_apis/test/Plans/33373/Suites/37384/testcases","inheritDefaultConfigurations":true,"lastPopulatedDate":"2016-01-28T06:51:13.12Z","state":"In Progress","lastUpdatedBy":{"id":"a7fdeeab-b926-46b5-81af-47a5d0e19acf","displayName":"Alisa Sergienko","uniqueName":"COPEMAN\\asergienko","url":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf","imageUrl":"http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"},"lastUpdatedDate":"2015-10-26T05:07:15.187Z"}], "count": 55 }
+        {
+            "testCase": {
+                "id": "27329",
+                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/wit/workItems/27329",
+                "webUrl": "http://cb-van-tfs01:8080/tfs/web/wi.aspx?pcguid=e2d210a1-5220-4372-9423-e2fff833f968&id=27329"
+            },
+            "pointAssignments": [
+                {
+                    "configuration": {
+                        "id": "2",
+                        "name": "Windows 7 and IE 9"
+                    },
+                    "tester": {
+                        "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "displayName": "Alisa Sergienko",
+                        "uniqueName": "COPEMAN\\asergienko",
+                        "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
+                    }
+                }
+            ]
+        },
+        {
+            "testCase": {
+                "id": "27330",
+                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/wit/workItems/27330",
+                "webUrl": "http://cb-van-tfs01:8080/tfs/web/wi.aspx?pcguid=e2d210a1-5220-4372-9423-e2fff833f968&id=27330"
+            },
+            "pointAssignments": [
+                {
+                    "configuration": {
+                        "id": "2",
+                        "name": "Windows 7 and IE 9"
+                    },
+                    "tester": {
+                        "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "displayName": "Alisa Sergienko",
+                        "uniqueName": "COPEMAN\\asergienko",
+                        "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
+                    }
+                }
+            ]
+        },
+        {
+            "testCase": {
+                "id": "30003",
+                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/wit/workItems/30003",
+                "webUrl": "http://cb-van-tfs01:8080/tfs/web/wi.aspx?pcguid=e2d210a1-5220-4372-9423-e2fff833f968&id=30003"
+            },
+            "pointAssignments": [
+                {
+                    "configuration": {
+                        "id": "2",
+                        "name": "Windows 7 and IE 9"
+                    },
+                    "tester": {
+                        "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "displayName": "Alisa Sergienko",
+                        "uniqueName": "COPEMAN\\asergienko",
+                        "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
+                    }
+                }
+            ]
+        },
+        {
+            "testCase": {
+                "id": "30006",
+                "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/wit/workItems/30006",
+                "webUrl": "http://cb-van-tfs01:8080/tfs/web/wi.aspx?pcguid=e2d210a1-5220-4372-9423-e2fff833f968&id=30006"
+            },
+            "pointAssignments": [
+                {
+                    "configuration": {
+                        "id": "2",
+                        "name": "Windows 7 and IE 9"
+                    },
+                    "tester": {
+                        "id": "a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "displayName": "Alisa Sergienko",
+                        "uniqueName": "COPEMAN\\asergienko",
+                        "url": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_apis/Identities/a7fdeeab-b926-46b5-81af-47a5d0e19acf",
+                        "imageUrl": "http://cb-van-tfs01:8080/tfs/DefaultCollection/_api/_common/identityImage?id=a7fdeeab-b926-46b5-81af-47a5d0e19acf"
+                    }
+                }
+            ]
+        }
+    ],
+    "count": 15
+}

@@ -1,107 +1,121 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using ConsoleApplication2.Classes;
+using Newtonsoft.Json;
 using RestSharp;
 
 namespace ConsoleApplication2
 {
     public class TFSClient
     {
-        private const string TFS_URL = "http://vancouver.copemanhealthcare.com:8899/tfs/DefaultCollection";
-        private readonly NetworkCredential Credentials = new NetworkCredential(@"COPEMAN\omishenkin", "Password123");
-        private readonly RestClient _aClient = new RestClient(TFS_URL);
+        private readonly NetworkCredential Credentials = new NetworkCredential(Constants.SOURCE_USER_NAME, Constants.SOURCE_PASSWORD);
+        private readonly RestClient _aClient = new RestClient(Constants.SOURCE_TFS_URL);
 
-        public List<WorkItemJson> GetWorkItems(params int[] ids)
+        private int _getWorkItemsRetryCount = Constants.RetryCount;
+        public ICollection<WorkItemJson> GetWorkItems(params int[] ids)
         {
-            var aRequest = new RestRequest($"/_apis/wit/workitems/?ids={string.Join(",", ids)}&$expand=all&api-version=1.0", Method.GET)
+            var path = $"/_apis/wit/workitems/?ids={string.Join(",", ids)}&$expand=all&api-version=1.0";
+            var aRequest = new RestRequest(path, Method.GET)
             {
                 Credentials = Credentials
             };
 
+            var retryLabel = _getWorkItemsRetryCount < Constants.RetryCount ? $"(RETRY #{Constants.RetryCount - _getWorkItemsRetryCount})" : "";
+            Logger.Log($"{retryLabel} Excecute request to: {path}");
             var aResponse = _aClient.Execute(aRequest);
+
+            if (aResponse.StatusCode == 0 && _getWorkItemsRetryCount > 0)
+            {
+                _getWorkItemsRetryCount--;
+                return GetWorkItems(ids);
+            }
 
             if (aResponse.StatusCode != HttpStatusCode.OK)
             {
+                Logger.Error(aResponse.ErrorMessage);
                 throw new Exception(aResponse.ErrorMessage);
             }
 
+            _getWorkItemsRetryCount = Constants.RetryCount;
             return Utils.GetItemCollectionFormJson<WorkItemJson>(aResponse.Content);
         }
 
-        public List<TestPlanJson> GetTestPlans()
+        public ICollection<TestPlanJson> GetTestPlans(int retryCount = Constants.RetryCount)
         {
-            var apiString = "/CHMS/_apis/test/plans?api-version=1.0";
+            var apiString = $"/{Constants.SOURCE_PROJECT_NAME}/_apis/test/plans?api-version=1.0";
 
             var aRequest = new RestRequest(apiString, Method.GET)
             {
                 Credentials = Credentials
             };
 
+            var retryLabel = retryCount < Constants.RetryCount ? $"(RETRY #{Constants.RetryCount - retryCount})" : "";
+            Logger.Log($"{retryLabel} Excecute request to: {apiString}");
             var aResponse = _aClient.Execute(aRequest);
+
+            if (aResponse.StatusCode == 0 && retryCount > 0)
+            {
+                return GetTestPlans(--retryCount);
+            }
 
             if (aResponse.StatusCode != HttpStatusCode.OK)
             {
+                Logger.Error(aResponse.ErrorMessage);
                 throw new Exception(aResponse.ErrorMessage);
             }
 
             return Utils.GetItemCollectionFormJson<TestPlanJson>(aResponse.Content);
         }
 
-        public List<TestSiuteJson> GetTestSuites(int planId)
+        public ICollection<TestSiuteJson> GetTestSuites(int planId, int retryCount = Constants.RetryCount)
         {
-            var apiString = $"/CHMS/_apis/test/plans/{planId}/suites?api-version=1.0";
+            var apiString = $"/{Constants.SOURCE_PROJECT_NAME}/_apis/test/plans/{planId}/suites?api-version=1.0";
 
             var aRequest = new RestRequest(apiString, Method.GET)
             {
                 Credentials = Credentials
             };
 
+            var retryLabel = retryCount < Constants.RetryCount ? $"(RETRY #{Constants.RetryCount - retryCount})" : "";
+            Logger.Log($"{retryLabel} Excecute request to: {apiString}");
             var aResponse = _aClient.Execute(aRequest);
+
+            if (aResponse.StatusCode == 0 && retryCount > 0)
+            {
+                return GetTestSuites(planId, --retryCount);
+            }
 
             if (aResponse.StatusCode != HttpStatusCode.OK)
             {
+                Logger.Error(aResponse.ErrorMessage);
                 throw new Exception(aResponse.ErrorMessage);
             }
 
             return Utils.GetItemCollectionFormJson<TestSiuteJson>(aResponse.Content);
         }
 
-        public TestSiuteJson GetTestSuiteWithChildren(int planId, int suiteId)
+        public ICollection<TestCaseJson> GetTestCases(int planId, int suiteId, int retryCount = Constants.RetryCount)
         {
-            var apiString = $"/CHMS/_apis/test/plans/{planId}/suites/{suiteId}?includeChildSuites=true&api-version=1.0";
+            var apiString = $"/{Constants.SOURCE_PROJECT_NAME}/_apis/test/plans/{planId}/suites/{suiteId}/testcases?api-version=1.0";
 
             var aRequest = new RestRequest(apiString, Method.GET)
             {
                 Credentials = Credentials
             };
 
+            var retryLabel = retryCount < Constants.RetryCount ? $"(RETRY #{Constants.RetryCount - retryCount})" : "";
+            Logger.Log($"{retryLabel} Excecute request to: {apiString}");
             var aResponse = _aClient.Execute(aRequest);
 
-            if (aResponse.StatusCode != HttpStatusCode.OK)
+            if (aResponse.StatusCode == 0 && retryCount > 0)
             {
-                throw new Exception(aResponse.ErrorMessage);
+                return GetTestCases(planId, suiteId, --retryCount);
             }
 
-            return Utils.GetItemFormJson<TestSiuteJson>(aResponse.Content);
-        }
-
-        public List<TestCaseJson> GetTestCases(int planId, int suiteId)
-        {
-            var apiString = $"/CHMS/_apis/test/plans/{planId}/suites/{suiteId}/testcases?api-version=1.0";
-
-            var aRequest = new RestRequest(apiString, Method.GET)
-            {
-                Credentials = Credentials
-            };
-
-            var aResponse = _aClient.Execute(aRequest);
-
             if (aResponse.StatusCode != HttpStatusCode.OK)
             {
+                Logger.Error(aResponse.ErrorMessage);
                 throw new Exception(aResponse.ErrorMessage);
             }
 
@@ -111,8 +125,7 @@ namespace ConsoleApplication2
 
     public class TestCaseJson
     {
-        public int id { get; set; }
-        public string name { get; set; }
+        public IdItem testCase { get; set; }
     }
 
     public class TestSiuteJson
@@ -126,6 +139,9 @@ namespace ConsoleApplication2
         public NamedItem<string> project { get; set; }
         public NamedItem<int> plan { get; set; }
         public NamedItem<int> parent { get; set; }
+
+        [JsonIgnore]
+        public string assignedTo;
 
         /// <summary>
         /// Filled only for Dynamic suite type
@@ -148,12 +164,15 @@ namespace ConsoleApplication2
         public string state { get; set; }
         public IdItem rootSuite { get; set; }
         public string clientUrl { get; set; }
+
+        [JsonIgnore]
+        public string assignedTo;
     }
 
     public class WorkItemCollectionJson<T>
     {
         public int count { get; set; }
-        public List<T> value { get; set; }
+        public ICollection<T> value { get; set; }
     }
 
     public class WorkItemJson

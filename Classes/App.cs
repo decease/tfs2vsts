@@ -1,84 +1,87 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ConsoleApplication2.Classes
 {
-    struct Relation
-    {
-        public int OldId { get; set; }
-        public int NewId { get; set; }
-
-        public Relation(int oldId, int newId)
-        {
-            OldId = oldId;
-            NewId = newId;
-        }
-    }
-
-    class App
+    internal class App
     {
         private readonly TFSClient _tfsClient = new TFSClient();
-        private readonly VSTSClient _vstsRest = new VSTSClient();
-
-        private List<Relation> planRelations { get; set; } = new List<Relation>();
-        private List<Relation> suiteRelations { get; set; } = new List<Relation>();
-        private List<Relation> caseRelations { get; set; } = new List<Relation>();
+        private readonly VSTSClient _vstsClient = new VSTSClient();
+        private List<TestSiuteJson> _currentPlanSuites = new List<TestSiuteJson>();
+        private List<TestSiuteJson> _remainedElements;
 
         public void Run()
         {
+            Logger.Log("Migration was started...");
+
+            //TODO: [OM] Turn it on
+            //_vstsRest.CopyAreas();
+
             var testPlanJsons = _tfsClient.GetTestPlans();
-            
+
+            // TODO: [OM] remove .Take(1)
             foreach (var plan in testPlanJsons.Take(1))
             {
                 SaveTestPlan(plan);
             }
+
+            Logger.Log("Migration was finished...");
         }
 
         private void SaveTestPlan(TestPlanJson testPlan)
         {
-            var suites = _tfsClient.GetTestSuites(testPlan.id);
-
             // Create test plan and save relation
-            var planItem  = _tfsClient.GetWorkItems(testPlan.id).First();
-            var newId = _vstsRest.CreateTestPlan(planItem);
-            planRelations.Add(new Relation(testPlan.id, newId));
+            var wiTestPlan = _tfsClient.GetWorkItems(testPlan.id);
+            testPlan.assignedTo = wiTestPlan.FirstOrDefault()?.fields["System.AssignedTo"];
+            _vstsClient.CreateTestPlan(testPlan);
 
-            // LABEL A
-            foreach (var suite in suites)
+            _currentPlanSuites = _tfsClient.GetTestSuites(testPlan.id).Where(s => s.parent != null).ToList();
+            _remainedElements = new List<TestSiuteJson>(_currentPlanSuites);
+            while (_remainedElements.Any())
             {
+                Logger.Log($"{_remainedElements.Count} suite items left.", ConsoleColor.Green);
+
+                var suite = _remainedElements.FirstOrDefault();
                 SaveTestSuite(testPlan, suite);
             }
         }
 
-        private void SaveTestSuite(TestPlanJson testPlan, TestSiuteJson suite)
+        private int SaveTestSuite(TestPlanJson testPlan, TestSiuteJson suite)
         {
-            // Recursion (Get children)
-            var suiteExt = _tfsClient.GetTestSuiteWithChildren(testPlan.id, suite.id);
-
-            if (suiteExt.suites != null && suiteExt.suites.Count != 0)
+            // If parent exists and does not created => create it first
+            var parentSuiteId = _vstsClient.GetSuiteId(suite.parent.name);
+            if (!parentSuiteId.HasValue)
             {
-                foreach (var childSuiteInfo in suiteExt.suites)
+                var parentSuite = _currentPlanSuites.FirstOrDefault(s => s.id == suite.parent.id);
+                parentSuiteId = SaveTestSuite(testPlan, parentSuite);
+            }
+
+            var wiTestSuite = _tfsClient.GetWorkItems(suite.id);
+            suite.assignedTo = wiTestSuite.FirstOrDefault()?.fields["System.AssignedTo"];
+
+            var suiteId = _vstsClient.CreateTestSuite(suite, parentSuiteId.Value);
+
+
+            // Create test cases
+            if (suite.suiteType == TestSiuteJson.StaticType)
+            {
+                var testCases = _tfsClient.GetTestCases(testPlan.id, suite.id);
+                foreach (var testCaseInfo in testCases)
                 {
-                    var childSuite = _tfsClient.GetTestSuiteWithChildren(testPlan.id, childSuiteInfo.id);
-                    SaveTestSuite(testPlan, childSuite);
+                    SaveTestCase(testCaseInfo, suiteId);
                 }
             }
 
-            // Create test suite and save relation
-            var suiteItem = _tfsClient.GetWorkItems(suite.id).First();
-            var newId = _vstsRest.CreateTestSuite(suiteItem);
-            suiteRelations.Add(new Relation(suite.id, newId));
+            _remainedElements.Remove(suite);
 
-            var testCases = _tfsClient.GetTestCases(testPlan.id, suite.id);
+            return suiteId;
+        }
 
-            foreach (var testCaseInfo in testCases)
-            {
-                var testCaseItem = _tfsClient.GetWorkItems(testCaseInfo.id).First();
-                var newCaseId = _vstsRest.CreateTestCase(testCaseItem.fields);
-                caseRelations.Add(new Relation(testCaseItem.id, newCaseId));
-
-                Utils.Log($"Create TestCase with id({testCaseItem.id}) name({testCaseInfo.name})");
-            }
+        private void SaveTestCase(TestCaseJson testCaseInfo, int suiteId)
+        {
+            var testCaseItem = _tfsClient.GetWorkItems(int.Parse(testCaseInfo.testCase.id)).First();
+            _vstsClient.CreateTestCase(testCaseItem.fields, suiteId);
         }
     }
 }
