@@ -18,43 +18,57 @@ namespace ConsoleApplication2.Classes
         private static string _targetTeamProjectName = Constants.TARGET_PROJECT_NAME;
         private readonly NetworkCredential _targetCredentials = new NetworkCredential(Constants.TARGET_USER_NAME, Constants.TARGET_PASSWORD);
 
-        private readonly TfsTeamProjectCollection _tpc;
-        private readonly WorkItemStore _workItemStore;
-        private readonly ITestManagementTeamProject _project;
+        private readonly TfsTeamProjectCollection _targetTfs;
+        private readonly WorkItemStore _targetWorkItemStore;
+        private readonly ITestManagementTeamProject _targetProject;
         private readonly Project _vsProject;
 
         private ITestPlan _currentTestPlan;
         private ICommonStructureService _css;
 
+        /// <summary>
+        /// Relations between TFS wi id and VSTS wi id
+        /// Key - TFS id
+        /// Value - VSTS id
+        /// </summary>
+        private Dictionary<int, int> _wiIdRealtions = new Dictionary<int, int>();
+
+        private WorkItemStore _sourceWorkItemStore;
+        private ITestManagementTeamProject _sourceProject;
+
 
         public VSTSClient()
         {
-            var tfsUri = new Uri(_targetCollectionUri);
-            var basicCredential = new BasicAuthCredential(_targetCredentials);
-            var tfsCredentials = new TfsClientCredentials(basicCredential) { AllowInteractive = false };
-            _tpc = new TfsTeamProjectCollection(tfsUri, tfsCredentials);
-            _tpc.EnsureAuthenticated();
+            // Target connections
+            var targetTfsUri = new Uri(_targetCollectionUri);
+            var targetBasicCredential = new BasicAuthCredential(_targetCredentials);
+            var targetTfsCredentials = new TfsClientCredentials(targetBasicCredential) { AllowInteractive = false };
+            _targetTfs = new TfsTeamProjectCollection(targetTfsUri, targetTfsCredentials);
+            _targetTfs.EnsureAuthenticated();
 
-            _workItemStore = _tpc.GetService<WorkItemStore>();
-            _project = _tpc.GetService<ITestManagementService>().GetTeamProject(_targetTeamProjectName);
+            _targetWorkItemStore = _targetTfs.GetService<WorkItemStore>();
+            _targetProject = _targetTfs.GetService<ITestManagementService>().GetTeamProject(_targetTeamProjectName);
+
+            // Source connections
+            var sourceTfsUri = new Uri(_sourceCollectionUri);
+            var sourceTfs = new TfsTeamProjectCollection(sourceTfsUri, _sourceCredentials);
+            sourceTfs.EnsureAuthenticated();
+
+            _sourceWorkItemStore = sourceTfs.GetService<WorkItemStore>();
+            _sourceProject = sourceTfs.GetService<ITestManagementService>().GetTeamProject(_targetTeamProjectName);
         }
 
 
         public void CopyAreas()
         {
             // SOURCE TFS
-            var tfsUri = new Uri(_sourceCollectionUri);
-            var sourceTfs = new TfsTeamProjectCollection(tfsUri, _sourceCredentials);
-            sourceTfs.EnsureAuthenticated();
-
-            var targetCss = _tpc.GetService<ICommonStructureService>();
+            var targetCss = _targetTfs.GetService<ICommonStructureService>();
             var targetProject = targetCss.GetProjectFromName(_targetTeamProjectName);
             var targetNodes = targetCss.ListStructures(targetProject.Uri);
 
             var targetAreas = targetNodes.FirstOrDefault(node => node.StructureType == "ProjectModelHierarchy");
 
-            var sourceWorkItemStore = sourceTfs.GetService<WorkItemStore>();
-            var sourceProject = sourceWorkItemStore.Projects.GetById(Constants.SOURCE_PROJECT_ID);
+            var sourceProject = _sourceWorkItemStore.Projects.GetById(Constants.SOURCE_PROJECT_ID);
 
             foreach (Node areaRootNode in sourceProject.AreaRootNodes)
             {
@@ -93,9 +107,26 @@ namespace ConsoleApplication2.Classes
             }
         }
 
+        public void CreateTestCases()
+        {
+            var testCases = _sourceProject.TestCases.Query("SELECT [Id] FROM WorkItems");//.ToList();
+            var total = testCases.Count();
+            var left = total;
+            foreach (var testCase in testCases)
+            {
+                var id = testCase.Id;
+                var testCaseWi = _sourceWorkItemStore.GetWorkItem(id);
+                var vstsId = CreateTestCase(testCaseWi.Fields);
+
+                _wiIdRealtions[id] = vstsId;
+
+                Logger.Log($"{--left}/{total} test cases migrated.");
+            }
+        }
+
         public void CreateTestPlan(TestPlanJson plan)
         {
-            _currentTestPlan = _project.TestPlans.Create();
+            _currentTestPlan = _targetProject.TestPlans.Create();
             _currentTestPlan.AreaPath = plan.area.name;
             _currentTestPlan.Name = plan.name;
             _currentTestPlan.Description = $"Assigned to: {plan.assignedTo}";
@@ -115,13 +146,13 @@ namespace ConsoleApplication2.Classes
             ITestSuiteBase testSuite;
             if (suite.suiteType == TestSiuteJson.StaticType)
             {
-                testSuite = _project.TestSuites.CreateStatic();
+                testSuite = _targetProject.TestSuites.CreateStatic();
                 
             }
             else
             {
-                testSuite = _project.TestSuites.CreateDynamic();
-                ((IDynamicTestSuite)testSuite).Query = _project.CreateTestQuery(suite.queryString);
+                testSuite = _targetProject.TestSuites.CreateDynamic();
+                ((IDynamicTestSuite)testSuite).Query = _targetProject.CreateTestQuery(suite.queryString);
             }
 
             testSuite.Title = suite.name;
@@ -152,13 +183,48 @@ namespace ConsoleApplication2.Classes
             return testSuite.Id;
         }
 
-        public void CreateTestCase(Dictionary<string, string> fields, int suiteId)
+        /// <summary>
+        /// Create new unrelated test case
+        /// </summary>
+        /// <param name="fields"></param>
+        private int CreateTestCase(FieldCollection fields)
         {
-            var testCase = _project.TestCases.Create();
-            testCase.Title = fields["System.Title"];
-            testCase.Area = fields["System.AreaPath"];
-            //TODO: [OM] Add AssignTO
+            var testCase = _targetProject.TestCases.Create();
+            testCase.Title = fields["System.Title"].Value.ToString();
+            testCase.Area = fields["System.AreaPath"].Value.ToString();
+
+            if (!string.IsNullOrEmpty(fields["System.AssignedTo"].Value.ToString()))
+            {
+                testCase.Description = $"Assigned to: {fields["System.AssignedTo"].Value}";
+            } else if (!string.IsNullOrEmpty(fields["System.CreatedBy"].Value.ToString()))
+            {
+                testCase.Description = $"Created by: {fields["System.CreatedBy"].Value}";
+            }
+
             testCase.Save();
+
+            var wiTestCase = _targetWorkItemStore.GetWorkItem(testCase.Id);
+            wiTestCase["Microsoft.VSTS.TCM.Steps"] = fields["Microsoft.VSTS.TCM.Steps"].Value.ToString();
+            wiTestCase.Save();
+
+            Logger.Success($"Test case was created with id('{testCase.Id}') name('{testCase.Title}')");
+
+            return testCase.Id;
+        }
+
+        /// <summary>
+        /// Create relation between test case and suite
+        /// </summary>
+        /// <param name="testCaseId"></param>
+        /// <param name="suiteId"></param>
+        public void RelateTestCaseToSuite(int testCaseId, int suiteId)
+        {
+            var testCase = _targetProject.TestCases.Find(_wiIdRealtions[testCaseId]);
+            if (testCase == null)
+            {
+                Logger.Error($"Can't find test case with Id = '{_wiIdRealtions[testCaseId]}'");
+                return;
+            }
 
             _currentTestPlan.Refresh();
             var parentSuite = Utils.FindSuiteRecursive(_currentTestPlan.RootSuite, suiteId);
@@ -166,15 +232,12 @@ namespace ConsoleApplication2.Classes
 
             _currentTestPlan.Save();
 
-            var wiTestCase = _workItemStore.GetWorkItem(testCase.Id);
-            wiTestCase["Microsoft.VSTS.TCM.Steps"] = fields["Microsoft.VSTS.TCM.Steps"];
-            wiTestCase.Save();
-            Logger.Success($"Test case was created with id({testCase.Id}) name({testCase.Title})");
+            Logger.Success($"Test case (id: \"{testCase.Id}\" name: \"{testCase.Title}\") was related to suite (id: \"{suiteId}\")");
         }
 
         public void Dispose()
         {
-            _tpc.Dispose();
+            _targetTfs.Dispose();
         }
     }
 }

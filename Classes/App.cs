@@ -15,13 +15,13 @@ namespace ConsoleApplication2.Classes
         {
             Logger.Log("Migration was started...");
 
-            //TODO: [OM] Turn it on
-            //_vstsRest.CopyAreas();
-
+            _vstsClient.CopyAreas();
+            
+            _vstsClient.CreateTestCases();
+            
             var testPlanJsons = _tfsClient.GetTestPlans();
 
-            // TODO: [OM] remove .Take(1)
-            foreach (var plan in testPlanJsons.Take(1))
+            foreach (var plan in testPlanJsons)
             {
                 SaveTestPlan(plan);
             }
@@ -80,8 +80,7 @@ namespace ConsoleApplication2.Classes
 
         private void SaveTestCase(TestCaseJson testCaseInfo, int suiteId)
         {
-            var testCaseItem = _tfsClient.GetWorkItems(int.Parse(testCaseInfo.testCase.id)).First();
-            _vstsClient.CreateTestCase(testCaseItem.fields, suiteId);
+            _vstsClient.RelateTestCaseToSuite(int.Parse(testCaseInfo.testCase.id), suiteId);
         }
     }
 }
