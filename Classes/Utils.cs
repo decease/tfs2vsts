@@ -18,9 +18,36 @@ namespace ConsoleApplication2.Classes
         public const int    SOURCE_PROJECT_ID = 142;
 
         public const string TARGET_TFS_URL = "https://carebook.visualstudio.com/DefaultCollection";
-        public const string TARGET_PROJECT_NAME = "CHMS";
+        public const string TARGET_PROJECT_NAME = "Test";
         public const string TARGET_USER_NAME = @"decease";
         public const string TARGET_PASSWORD = "Test123$";
+
+        public static Dictionary<string, string> UserMapping = new Dictionary<string, string>
+        {
+            ["Ilya Vasilyev"] = "Ilya Vasilev",
+            ["Vera Summers"] = "vsummers",
+            ["Vera Gladkikh"] = "vgladkikh",
+            ["Alexander Ischenko"] = "Alexander Ishchenko",
+            ["Alexey Babenko"] = "Ilya Vasilev",
+            ["Alisa Sergienko"] = "Ilya Vasilev",
+            ["Erin Wang"] = "Ilya Vasilev",
+            ["GeSir Lee"] = "Ilya Vasilev",
+            ["Christina Lin"] = "Ilya Vasilev",
+            ["Dmitry Nikitenko"] = "Dmitry Nikitenko",
+            ["Ilya Popov"] = "Ilya Popov",
+            ["Sergey Nemtsev"] = "Sergey Nemtsev",
+            ["Sofya Berezovskaya"] = "Sofya Berezovskaya",
+            ["Oleg Mishenkin"] = "Oleg Mishenkin"
+        };
+
+        public static List<string> AllowIterations = new List<string>
+        {
+            "Iteration 39  (catch up)",
+            "Iteration 41",
+            "Iteration 42",
+            "Bug Backlog",
+            "Iteration 40"
+        };
     }
 
 

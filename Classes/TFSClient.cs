@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
-using ConsoleApplication2.Classes;
 using Newtonsoft.Json;
 using RestSharp;
 
-namespace ConsoleApplication2
+namespace ConsoleApplication2.Classes
 {
-    public class TFSClient
+    public class TFSRestClient
     {
-        private readonly NetworkCredential Credentials = new NetworkCredential(Constants.SOURCE_USER_NAME, Constants.SOURCE_PASSWORD);
+        private readonly NetworkCredential _credentials = new NetworkCredential(Constants.SOURCE_USER_NAME, Constants.SOURCE_PASSWORD);
         private readonly RestClient _aClient = new RestClient(Constants.SOURCE_TFS_URL);
 
         private int _getWorkItemsRetryCount = Constants.RetryCount;
@@ -18,7 +17,7 @@ namespace ConsoleApplication2
             var path = $"/_apis/wit/workitems/?ids={string.Join(",", ids)}&$expand=all&api-version=1.0";
             var aRequest = new RestRequest(path, Method.GET)
             {
-                Credentials = Credentials
+                Credentials = _credentials
             };
 
             var retryLabel = _getWorkItemsRetryCount < Constants.RetryCount ? $"(RETRY #{Constants.RetryCount - _getWorkItemsRetryCount})" : "";
@@ -47,7 +46,7 @@ namespace ConsoleApplication2
 
             var aRequest = new RestRequest(apiString, Method.GET)
             {
-                Credentials = Credentials
+                Credentials = _credentials
             };
 
             var retryLabel = retryCount < Constants.RetryCount ? $"(RETRY #{Constants.RetryCount - retryCount})" : "";
@@ -74,7 +73,7 @@ namespace ConsoleApplication2
 
             var aRequest = new RestRequest(apiString, Method.GET)
             {
-                Credentials = Credentials
+                Credentials = _credentials
             };
 
             var retryLabel = retryCount < Constants.RetryCount ? $"(RETRY #{Constants.RetryCount - retryCount})" : "";
@@ -101,7 +100,7 @@ namespace ConsoleApplication2
 
             var aRequest = new RestRequest(apiString, Method.GET)
             {
-                Credentials = Credentials
+                Credentials = _credentials
             };
 
             var retryLabel = retryCount < Constants.RetryCount ? $"(RETRY #{Constants.RetryCount - retryCount})" : "";

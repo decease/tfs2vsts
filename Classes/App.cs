@@ -6,8 +6,8 @@ namespace ConsoleApplication2.Classes
 {
     internal class App
     {
-        private readonly TFSClient _tfsClient = new TFSClient();
-        private readonly VSTSClient _vstsClient = new VSTSClient();
+        private readonly TFSRestClient _tfsRestClient = new TFSRestClient();
+        private readonly VSTSMigrationManager _vstsMigrationManager = new VSTSMigrationManager();
         private List<TestSiuteJson> _currentPlanSuites = new List<TestSiuteJson>();
         private List<TestSiuteJson> _remainedElements;
 
@@ -15,16 +15,21 @@ namespace ConsoleApplication2.Classes
         {
             Logger.Log("Migration was started...");
 
-            _vstsClient.CopyAreas();
-            
-            _vstsClient.CreateTestCases();
-            
-            var testPlanJsons = _tfsClient.GetTestPlans();
+            //_vstsMigrationManager.MigrateAreas();
+            //_vstsMigrationManager.MigrateIterations();
+
+            _vstsMigrationManager.MigrateWorkItems();
+
+            /*
+            _vstsMigrationManager.MigrateTestCases();
+
+            var testPlanJsons = _tfsRestClient.GetTestPlans();
 
             foreach (var plan in testPlanJsons)
             {
                 SaveTestPlan(plan);
             }
+            */
 
             Logger.Log("Migration was finished...");
         }
@@ -32,11 +37,11 @@ namespace ConsoleApplication2.Classes
         private void SaveTestPlan(TestPlanJson testPlan)
         {
             // Create test plan and save relation
-            var wiTestPlan = _tfsClient.GetWorkItems(testPlan.id);
+            var wiTestPlan = _tfsRestClient.GetWorkItems(testPlan.id);
             testPlan.assignedTo = wiTestPlan.FirstOrDefault()?.fields["System.AssignedTo"];
-            _vstsClient.CreateTestPlan(testPlan);
+            _vstsMigrationManager.CreateTestPlan(testPlan);
 
-            _currentPlanSuites = _tfsClient.GetTestSuites(testPlan.id).Where(s => s.parent != null).ToList();
+            _currentPlanSuites = _tfsRestClient.GetTestSuites(testPlan.id).Where(s => s.parent != null).ToList();
             _remainedElements = new List<TestSiuteJson>(_currentPlanSuites);
             while (_remainedElements.Any())
             {
@@ -50,23 +55,23 @@ namespace ConsoleApplication2.Classes
         private int SaveTestSuite(TestPlanJson testPlan, TestSiuteJson suite)
         {
             // If parent exists and does not created => create it first
-            var parentSuiteId = _vstsClient.GetSuiteId(suite.parent.name);
+            var parentSuiteId = _vstsMigrationManager.GetSuiteId(suite.parent.name);
             if (!parentSuiteId.HasValue)
             {
                 var parentSuite = _currentPlanSuites.FirstOrDefault(s => s.id == suite.parent.id);
                 parentSuiteId = SaveTestSuite(testPlan, parentSuite);
             }
 
-            var wiTestSuite = _tfsClient.GetWorkItems(suite.id);
+            var wiTestSuite = _tfsRestClient.GetWorkItems(suite.id);
             suite.assignedTo = wiTestSuite.FirstOrDefault()?.fields["System.AssignedTo"];
 
-            var suiteId = _vstsClient.CreateTestSuite(suite, parentSuiteId.Value);
+            var suiteId = _vstsMigrationManager.CreateTestSuite(suite, parentSuiteId.Value);
 
 
             // Create test cases
             if (suite.suiteType == TestSiuteJson.StaticType)
             {
-                var testCases = _tfsClient.GetTestCases(testPlan.id, suite.id);
+                var testCases = _tfsRestClient.GetTestCases(testPlan.id, suite.id);
                 foreach (var testCaseInfo in testCases)
                 {
                     SaveTestCase(testCaseInfo, suiteId);
@@ -80,7 +85,7 @@ namespace ConsoleApplication2.Classes
 
         private void SaveTestCase(TestCaseJson testCaseInfo, int suiteId)
         {
-            _vstsClient.RelateTestCaseToSuite(int.Parse(testCaseInfo.testCase.id), suiteId);
+            _vstsMigrationManager.RelateTestCaseToSuite(int.Parse(testCaseInfo.testCase.id), suiteId);
         }
     }
 }
