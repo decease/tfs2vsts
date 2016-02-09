@@ -18,9 +18,9 @@ namespace ConsoleApplication2.Classes
             //_vstsMigrationManager.MigrateAreas();
             //_vstsMigrationManager.MigrateIterations();
 
-            _vstsMigrationManager.MigrateWorkItems();
+            //_vstsMigrationManager.MigrateWorkItems();
 
-            /*
+            
             _vstsMigrationManager.MigrateTestCases();
 
             var testPlanJsons = _tfsRestClient.GetTestPlans();
@@ -29,7 +29,7 @@ namespace ConsoleApplication2.Classes
             {
                 SaveTestPlan(plan);
             }
-            */
+            
 
             Logger.Log("Migration was finished...");
         }

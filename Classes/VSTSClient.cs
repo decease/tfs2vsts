@@ -153,6 +153,14 @@ namespace ConsoleApplication2.Classes
             _currentTestPlan.Description = $"Assigned to: {plan.assignedTo}";
 
             _currentTestPlan.Save();
+
+            var wiTestPlan = _targetWorkItemStore.GetWorkItem(_currentTestPlan.Id);
+            if (Constants.UserMapping.Keys.Any(k => k == plan.assignedTo))
+            {
+                wiTestPlan["Assigned To"] = Constants.UserMapping[plan.assignedTo];
+                wiTestPlan.Save();
+            }
+
             Logger.Success($"Test plan was created with id({_currentTestPlan.Id}) name({_currentTestPlan.Name})");
         }
 
@@ -199,6 +207,14 @@ namespace ConsoleApplication2.Classes
             }
 
             _currentTestPlan.Save();
+
+            var wiTestSuite = _targetWorkItemStore.GetWorkItem(testSuite.Id);
+            if (Constants.UserMapping.Keys.Any(k => k == suite.assignedTo))
+            {
+                wiTestSuite["Assigned To"] = Constants.UserMapping[suite.assignedTo];
+                wiTestSuite.Save();
+            }
+
             Logger.Success($"Test suite was created with id({testSuite.Id}) name({testSuite.Title})");
 
             return testSuite.Id;
@@ -214,9 +230,16 @@ namespace ConsoleApplication2.Classes
             testCase.Title = fields["System.Title"].Value.ToString();
             testCase.Area = fields["System.AreaPath"].Value.ToString().Replace(Constants.SOURCE_PROJECT_NAME, Constants.TARGET_PROJECT_NAME);
 
-            if (!string.IsNullOrEmpty(fields["System.AssignedTo"].Value.ToString()))
+            var value = fields["System.AssignedTo"].Value.ToString();
+            if (!string.IsNullOrEmpty(value))
             {
-                testCase.Description = $"Assigned to: {fields["System.AssignedTo"].Value}";
+                testCase.Description = $"Assigned to: {value}";
+
+                if (Constants.UserMapping.Keys.Any(k => k == value))
+                {
+                    testCase.WorkItem["Assigned To"] = Constants.UserMapping[value];
+                }
+
             } else if (!string.IsNullOrEmpty(fields["System.CreatedBy"].Value.ToString()))
             {
                 testCase.Description = $"Created by: {fields["System.CreatedBy"].Value}";
@@ -303,7 +326,6 @@ namespace ConsoleApplication2.Classes
         {
             "Priority",
             "Stack Rank",
-            "Severity",
             "Description",
             "Title"
         };
@@ -319,8 +341,8 @@ namespace ConsoleApplication2.Classes
         {
             //TODO: [OM] Uncomment
             MigrateTasks();
-            //MigrateBugs();
-            //MigrateUserStories();
+            MigrateBugs();
+            MigrateUserStories();
         }
 
         private void MigrateTasks()
@@ -451,10 +473,10 @@ namespace ConsoleApplication2.Classes
                 {
                     // Set "Active" for tasks
                     workItem.State = wiType.Name != "Task" ? "Resolved" : "Active";
-                    workItem.Reason = sourceWorkItem.Reason;
+                    workItem.Reason = wiType.Name != "Task" ? sourceWorkItem.Reason : "Work started";
 
                     if (workItem.Validate().Count == 0)
-                    {
+                    { 
                         workItem.Save();
                     }
                     else
