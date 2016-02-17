@@ -15,10 +15,10 @@ namespace ConsoleApplication2.Classes
         {
             Logger.Log("Migration was started...");
 
-            //_vstsMigrationManager.MigrateAreas();
-            //_vstsMigrationManager.MigrateIterations();
+            _vstsMigrationManager.MigrateAreas();
+            _vstsMigrationManager.MigrateIterations();
 
-            //_vstsMigrationManager.MigrateWorkItems();
+            _vstsMigrationManager.MigrateWorkItems();
 
             
             _vstsMigrationManager.MigrateTestCases();

@@ -339,7 +339,6 @@ namespace ConsoleApplication2.Classes
 
         public void Migrate()
         {
-            //TODO: [OM] Uncomment
             MigrateTasks();
             MigrateBugs();
             MigrateUserStories();
