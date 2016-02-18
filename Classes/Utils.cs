@@ -11,17 +11,19 @@ namespace ConsoleApplication2.Classes
     {
         public const int RetryCount = 10;
 
-        public const string SOURCE_TFS_URL = "http://vancouver.copemanhealthcare.com:8899/tfs/DefaultCollection";
-        public const string SOURCE_PROJECT_NAME = "CHMS";
-        public const string SOURCE_USER_NAME = @"COPEMAN\omishenkin";
-        public const string SOURCE_PASSWORD = "Password123";
-        public const int    SOURCE_PROJECT_ID = 142;
+        public const string SOURCE_TFS_URL = "http://<your_address>:8899/tfs/DefaultCollection";
+        public const string SOURCE_PROJECT_NAME = "<project_name>";
+        public const string SOURCE_USER_NAME = "<user_name>"
+        public const string SOURCE_PASSWORD = "<password>";
+        public const int    SOURCE_PROJECT_ID = <project_id>;
 
-        public const string TARGET_TFS_URL = "https://carebook.visualstudio.com/DefaultCollection";
-        public const string TARGET_PROJECT_NAME = "CHMS";
-        public const string TARGET_USER_NAME = @"decease";
-        public const string TARGET_PASSWORD = "Test123$";
+        public const string TARGET_TFS_URL = "https://<team_project_name>.visualstudio.com/DefaultCollection";
+        public const string TARGET_PROJECT_NAME = <project_name>
+        public const string TARGET_USER_NAME = "<user_name>";
+        public const string TARGET_PASSWORD = "<password>";
 
+	// User mapping
+	// ["<USER IN TFS>"] = "<USER IN VSTS>"
         public static readonly Dictionary<string, string> UserMapping = new Dictionary<string, string>
         {
             ["Ilya Vasilyev"] = "Ilya Vasilev",
@@ -39,6 +41,7 @@ namespace ConsoleApplication2.Classes
             ["Oleg Mishenkin"] = "Oleg Mishenkin"
         };
 
+	// List of iteration need to migrate
         public static readonly List<string> AllowIterations = new List<string>
         {
             "Iteration 39  (catch up)",
